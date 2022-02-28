@@ -1,0 +1,18 @@
+/* header picture and text styles */
+.headerContainer{
+
+}
+
+.titleImage {
+    width: 102%;
+    margin: -10px;
+    height: 15em;
+}
+
+.appTitle{
+    color: white;
+    margin: -100px 5px;
+    font-size: 60pt;
+    text-align: end;
+    text-shadow: 2px 2px 8px black;
+}
