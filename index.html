@@ -7,12 +7,29 @@
     <link rel="stylesheet" href="./assets/css/style.css"/>
     <title>ParkScape</title>
 </head>
-<header class="headerContainer"> 
-    <img class="titleImage" src="./assets/images/croppedrockies.png"/>
-    <div class="appTitle">ParkScape</div>
-</header>
 <body>
+    <header class="headerContainer"> 
+        <img class="titleImage" src="./assets/images/croppedrockies.png"/>
+        <div class="appTitle">ParkScape</div>
+    </header>
+    <!-- national park selection form -->
+    <section class="parkFormContainer" id="park-form-container">
+        <div class="formBox" id="form-box">
+            <form class="formPage">
+                <input type="text" class="parkSelectionInput" placeholder="National Park Selection" id="park-selection" name="National Park"><br>
+                <div class="dateSelectorsBox">
+                    <input type="text" class="startDateInput" placeholder="From" id="start-date">
+                    <div>
+                        <input type="text" class="endDateInput" placeholder="To" id="end-date"><br>
+                    </div>
+                </div>
+                <button class="submitBtn" id="submit-btn">Submit</button>
+            </form>
+        </div>
+    </section>
+    
     
 </body>
+
 <script src="./assets/js/script.js"></script>
 </html>
