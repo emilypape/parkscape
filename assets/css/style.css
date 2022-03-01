@@ -31,10 +31,18 @@
 .navbarContainer {
     display: flex;
     justify-content: space-evenly;
-    color: white;
     background-color: #454E59;
     margin: -8px 0 50px 0;
     padding: 15px;
+}
+
+.navText {
+    color: white;
+    font-size: 18pt;
+}
+
+.navText:hover {
+    color: #707454;
 }
 
 /* end navbar styles */
@@ -96,6 +104,39 @@
 
 /* end form styles */
 
+/* start park display styles */
+.nationalParkContainer {
+    display: flex;
+    justify-content: center;
+    
+    
+}
+
+.nationalParkBox {
+    display: flex;
+    background-color: #958778;
+    border-top: solid 5px #707454;
+    color: white;
+    /* padding: 200px 350px; */
+}
+
+.parkPicture {
+
+}
+
+.parkInfoContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttonRowOne{
+    display: flex;
+}
+
+.buttonRowTwo{
+    display: flex;
+}
+
 /* footer styles */
 
 .footerStyles {
@@ -103,6 +144,9 @@
     display: flex;
     margin: 50px 0 0 0;
     padding: 15px;
+    position: absolute;
+    bottom: 0;
+    width: 98%;
 } 
 
 .npsLink {
@@ -111,4 +155,13 @@
     text-decoration: none;
     margin-left: 20px;
 }
+
+.npsLink:hover {
+    color: #707454;
+}
 /* end footer styles */
+
+/* utility classes */
+.hidden {
+    display: none;
+}
