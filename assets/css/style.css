@@ -96,8 +96,19 @@
 
 /* end form styles */
 
+/* footer styles */
 
-.footerContainer {
+.footerStyles {
     background-color: #454E59;
     display: flex;
+    margin: 50px 0 0 0;
+    padding: 15px;
+} 
+
+.npsLink {
+    color: white;
+    font-size: 14pt;
+    text-decoration: none;
+    margin-left: 20px;
 }
+/* end footer styles */
