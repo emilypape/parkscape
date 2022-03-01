@@ -42,7 +42,6 @@
 /* start input form styles */
 .parkFormContainer {
     display: flex;
-    
     justify-content: center;
 }
 
@@ -51,7 +50,8 @@
     flex-direction: column;
     background-color: #838772;
     padding: 150px 60px;
-    border-radius: 25px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 40px 1px grey;
 }
 
 .parkSelectionInput {
