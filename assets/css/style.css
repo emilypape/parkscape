@@ -26,6 +26,19 @@
     text-shadow: 2px 2px 8px black;
 }
 /* end header pic and text styles */
+
+/* navbar styles */
+.navbarContainer {
+    display: flex;
+    justify-content: space-evenly;
+    color: white;
+    background-color: #454E59;
+    margin: -8px 0 50px 0;
+    padding: 15px;
+}
+
+/* end navbar styles */
+
 /* start input form styles */
 .parkFormContainer {
     display: flex;
