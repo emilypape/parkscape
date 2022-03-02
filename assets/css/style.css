@@ -212,7 +212,7 @@
     display: flex;
     margin: 50px 0 0 0;
     padding: 15px;
-    position: relative;
+    position: fixed;
     bottom: 0;
     width: 98%;
 } 
