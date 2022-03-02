@@ -157,6 +157,27 @@
     flex-direction: column;
 }
 
+/* end hike list styles */
+
+/* start visitor info styles */
+.visitorInfoContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.visitorInfoBox {
+    display: flex;
+    background-color: #958778;
+    border-top: solid 5px #707454;
+    color: white;
+}
+
+.visitorInfoList {
+    display: flex;
+    flex-direction: column;
+   
+}
+/* end visitor info styles */
 
 /* footer styles */
 
