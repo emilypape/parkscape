@@ -22,7 +22,7 @@
     </section>
 
     <!-- national park selection form -->
-    <section class="parkFormContainer hidden" id="park-form-container">
+    <section class="parkFormContainer" id="park-form-container">
         <div class="formBox" id="form-box">
             <form class="formPage">
                 <input type="text" class="parkSelectionInput" placeholder="  National Park Selection" id="park-selection" name="National Park"><br>
@@ -74,8 +74,13 @@
         </div>
     </section>
     <!-- end hike info section -->
+
+    <!-- start weather forecast section -->
+
+    <!-- end weather forecast section -->
+
     <!-- start visitor info section -->
-    <section class="visitorInfoContainer" id="visitor-info-container">
+    <section class="visitorInfoContainer hidden" id="visitor-info-container">
         <div class="visitorInfoBox">
             <div class="googleMap" id="google-map">Google Map</div>
             <div class="visitorInfoList">
@@ -87,6 +92,26 @@
         </div>
     </section>
     <!-- end visitor info section -->
+
+    <!-- start Bucketlist Section -->
+    <section class="bucketlistContainer hidden" id="bucketlist-container">
+        <div class="bucketlistBox" id="bucketlist-box">
+            <div class="bucketlistTitle">Bucketlist</div>
+            <div class="listBoxes">
+                <div class="dragDropBox" id="drag-drop-todo">
+                    <div class="textContainerOne">
+                        <div class="todoText">To-Do</div>
+                    </div>
+                </div>
+                <div class="dragDropBox" id="drag-drop-for-later">
+                    <div class="textContainerTwo">
+                        <div class="forLaterText">For Later</div>
+                    </div>
+                </div>
+            </div>
+            <div class="bucketlistDelete" id="drag-drop-delete">Delete</div>
+        </div>
+    </section>
 
     <!-- footer section -->
     <footer class="footerStyles">

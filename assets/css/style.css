@@ -179,6 +179,32 @@
 }
 /* end visitor info styles */
 
+/* begin bucketList styles */
+.bucketlistContainer {
+    display: flex;
+    justify-content: center;
+    color: #FCF6EE;
+}
+
+.bucketlistBox {
+    display: flex;
+    flex-direction: column;
+    background-color: #454E59;
+    align-items: center;
+}
+
+.listBoxes {
+    display: flex;
+}
+
+.dragDropBox {
+    background-color: #FCF6EE;
+    color: black;
+}
+
+.bucketlistDelete {
+    background-color: red;
+}
 /* footer styles */
 
 .footerStyles {
@@ -186,7 +212,7 @@
     display: flex;
     margin: 50px 0 0 0;
     padding: 15px;
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 98%;
 } 
