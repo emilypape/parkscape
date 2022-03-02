@@ -137,6 +137,27 @@
     display: flex;
 }
 
+/* end park display styles */
+/* start hike display styles */
+.bestHikesContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.bestHikesBox {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #958778;
+    border-top: solid 5px #707454;
+    color: white;
+}
+
+.hikeList {
+    display: flex;
+    flex-direction: column;
+}
+
+
 /* footer styles */
 
 .footerStyles {
