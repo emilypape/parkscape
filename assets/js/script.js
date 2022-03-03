@@ -1,5 +1,6 @@
 var parkSelectionInput = document.querySelector('#park-selection');
 var submitBtn = document.querySelector('#submit-btn');
+var activityBtn = document.querySelector('#activity-btn');
 // api key for the project
 var key = '2JLCuHgadecfJrBe7FWSG7jOky4xF2fjg5Q5O458';
 
@@ -18,7 +19,22 @@ function nationalParkFetch (parks) {
 }
 
 // fetch with things to do end point for the hiking section
+function thingsToDoFetch (parks) {
+    var thingsToDoUrl = `https://developer.nps.gov/api/v1/thingstodo?parkCode=${parks}&api_key=${key}`
+    fetch(thingsToDoUrl).then(function(response){
+        if(response.ok){
+            response.json().then(function(thingsToDoData){
+                console.log(thingsToDoData);
+            })
+        }
+    })
+}
 
+// click listener function for the best hikes section
+function thingsToDoClickEvent(){
+    var parks = parkSelectionInput.value 
+    thingsToDoFetch(parks);
+}
 
 // click event function for park selection to keep fetch function pure for further use
 // this function can also house the information for dates
@@ -34,3 +50,4 @@ function submitBtnClickEvent (e) {
 }
 
 submitBtn.addEventListener('click', submitBtnClickEvent);
+activityBtn.addEventListener('click', thingsToDoClickEvent);
