@@ -1,6 +1,7 @@
 var parkSelectionInput = document.querySelector('#park-selection');
 var submitBtn = document.querySelector('#submit-btn');
 var activityBtn = document.querySelector('#activity-btn');
+var hikeList = document.querySelector('#dynamic-hike-list');
 // api key for the project
 var key = '2JLCuHgadecfJrBe7FWSG7jOky4xF2fjg5Q5O458';
 
@@ -14,7 +15,7 @@ function nationalParkFetch (parks) {
             response.json().then(function(parkData) {
                 console.log(parkData);
             })
-        }
+        } 
     })
 }
 
@@ -24,10 +25,27 @@ function thingsToDoFetch (parks) {
     fetch(thingsToDoUrl).then(function(response){
         if(response.ok){
             response.json().then(function(thingsToDoData){
-                console.log(thingsToDoData);
+                createHikePage(parks,thingsToDoData);
             })
         }
     })
+}
+
+function createHikePage (parks, activities) {
+    var hikes = 0
+    for(var i = 0; i < activities.data.length; i++ ) {
+        if(hikes === 5 ) {
+            return
+        }
+        if(activities.data[i].activities[0].name.toLowerCase() === 'hiking'){
+            hikes++
+            var popularHikes = document.createElement('button');
+            popularHikes.id = '#popular-hikes-btn'
+            popularHikes.textContent = activities.data[i].title
+            popularHikes.classList.add('popularHikesBtn')
+            hikeList.appendChild(popularHikes);
+        }
+    }
 }
 
 // click listener function for the best hikes section

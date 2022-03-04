@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <title>ParkScape</title>
 </head>
 <body>
@@ -38,7 +39,7 @@
     </section>
     <!-- end national park selection form -->
     <!-- national park information display -->
-    <section class="nationalParkContainer hidden" id="national-park-container">
+    <section class="nationalParkContainer" id="national-park-container">
         <div class="nationalParkBox">
             <div class="parkPicture" id="park-picture">
                 picture
@@ -48,7 +49,7 @@
                 <p class="parkOverview" id="park-overview">park overview</p>
                 <div class="parkOptionsContainer" id="park-options-container">
                     <div class="buttonRowOne">
-                        <button id="activity-btn" >Activities</button>
+                        <button id="activity-btn" >Hikes</button>
                         <button>Visitor Info</button>
                     </div>
                     <div class="buttonRowTwo">
@@ -59,14 +60,13 @@
         </div>
     </section>
     <!-- end national park information display -->
-    <section class="bestHikesContainer hidden" id="best-hikes-container">
+    <section class="bestHikesContainer" id="best-hikes-container">
         <div class="bestHikesBox">
-            <div class="hikeList">
+            <div class="hikeList" id="hike-list-container">
                 <h1 class="hikeTitleText">Top Rated Hikes</h1>
-                <button>hike</button>
-                <button>hike</button>
-                <button>hike</button>
-                <button>hike</button>
+                <div class="hikeList" id="dynamic-hike-list">
+                    
+                </div>
                 <p>*click on a hike to add it to your bucketlist!*</p>
             </div>
             <img src="./assets/images/hiking photo.jpeg"/>
@@ -93,7 +93,7 @@
     <!-- end visitor info section -->
 
     <!-- start Bucketlist Section -->
-    <section class="bucketlistContainer hidden" id="bucketlist-container">
+    <section class="bucketlistContainer" id="bucketlist-container">
         <div class="bucketlistBox" id="bucketlist-box">
             <div class="bucketlistTitle">Bucketlist</div>
             <div class="listBoxes">
@@ -113,7 +113,7 @@
     </section>
 
     <!-- footer section -->
-    <footer class="footerStyles">
+    <footer class="footerStyles hidden">
         <a class="npsLink" id="nps-link" href="https://www.nps.gov/index.htm">Visit NPS @</a>
     </footer>
     <!-- end footer section -->
