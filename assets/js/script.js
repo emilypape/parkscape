@@ -5,6 +5,10 @@ var hikeList = document.querySelector('#dynamic-hike-list');
 // api key for the project
 var key = '2JLCuHgadecfJrBe7FWSG7jOky4xF2fjg5Q5O458';
 
+function addToBucketlist() {
+    // set hikes to local storage when clicked
+}
+
 // function that fetchest the national park API with necessary parameters
 function nationalParkFetch (parks) {
     // park code will accept the typed in park name as the code, already checked
@@ -31,6 +35,7 @@ function thingsToDoFetch (parks) {
     })
 }
 
+// function to sort the data, grab hike info and append to page
 function createHikePage (parks, activities) {
     var hikes = 0
     for(var i = 0; i < activities.data.length; i++ ) {
