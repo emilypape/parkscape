@@ -12,7 +12,8 @@ function nationalParkFetch (parks) {
     fetch(NatParkUrl).then(function(response){
         if(response.ok) {
             response.json().then(function(parkData) {
-                console.log(parkData);
+                //console.log(parkData);
+                pInfoPage(parkData);
             })
         }
     })
@@ -24,7 +25,7 @@ function thingsToDoFetch (parks) {
     fetch(thingsToDoUrl).then(function(response){
         if(response.ok){
             response.json().then(function(thingsToDoData){
-                console.log(thingsToDoData);
+                //console.log(thingsToDoData);
             })
         }
     })
@@ -51,3 +52,22 @@ function submitBtnClickEvent (e) {
 
 submitBtn.addEventListener('click', submitBtnClickEvent);
 activityBtn.addEventListener('click', thingsToDoClickEvent);
+
+// Script elements for park page
+
+let pInfoPage = function(parkInfo, toDoInfo){
+let parkNameEl = document.querySelector("#park-name");
+parkNameEl.textContent = parkInfo.data[0].name;
+
+let parkDescEl = document.querySelector("#park-overview");
+parkDescEl.textContent = parkInfo.data[0].description;
+
+let parkImageEl = document.querySelector("#park-picture");
+parkImageEl.setAttribute("src", parkInfo.data[0].images[0].url);
+parkImageEl.setAttribute("alt", parkInfo.data[0].images[0].altText);
+};
+
+//end parkpage script
+
+
+nationalParkFetch("redwood");

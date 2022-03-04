@@ -20,9 +20,8 @@
 
 .appTitle{
     color: white;
+    margin: -100px 5px;
     font-size: 60pt;
-    margin-top: pure-100px;
-    margin-right: 10px;
     text-align: end;
     text-shadow: 2px 2px 8px black;
 }
@@ -118,20 +117,66 @@
     background-color: #958778;
     border-top: solid 5px #707454;
     color: white;
+    width: 85%;
     /* padding: 200px 350px; */
 }
 
 .parkPicture {
+    width: 40%;
+    margin: 10px;
+    max-height: 400px;
+}
 
+.parkName  {
+    align-self: center;
+    font-size: 40px;
+    padding: 0 10px;
+    border-bottom: 1px solid #707454;
+}
+
+.parkOverview {
+    font-size: larger;
+}
+
+.activityBtn {
+    width: 90%;
+    height: 40px;
+    border: none;
+
+    background-image: url(https://www.nps.gov/common/uploads/structured_data/3C7B4BEC-1DD8-B71B-0B2CF833F93140FF.jpg);
+    background-size: cover;
+    font-weight: bold;
+    color: #FCF6EE;
+    box-shadow: 2px 2px 2px #454E59;
+}
+
+.visitorBtn {
+    width: 90%;
+    height: 40px;
+    border: none;
+   
+    background-image: url(https://www.nps.gov/common/uploads/structured_data/3C7B477B-1DD8-B71B-0BCB48E009241BAA.jpg);
+    background-size: cover;
+    font-weight: bold;
+    color: #FCF6EE;
+    box-shadow: 2px 2px 2px #454E59;
 }
 
 .parkInfoContainer {
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
+    
 }
 
 .buttonRowOne{
     display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100px;
+    justify-content: space-evenly;
+    align-items: center;
+
 }
 
 .buttonRowTwo{

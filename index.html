@@ -22,7 +22,7 @@
     </section>
 
     <!-- national park selection form -->
-    <section class="parkFormContainer" id="park-form-container">
+    <section class="parkFormContainer hidden" id="park-form-container">
         <div class="formBox" id="form-box">
             <form class="formPage">
                 <input type="text" class="parkSelectionInput" placeholder="  National Park Selection" id="park-selection" name="National Park"><br>
@@ -38,18 +38,16 @@
     </section>
     <!-- end national park selection form -->
     <!-- national park information display -->
-    <section class="nationalParkContainer hidden" id="national-park-container">
+    <section class="nationalParkContainer" id="national-park-container">
         <div class="nationalParkBox">
-            <div class="parkPicture" id="park-picture">
-                picture
-            </div>
+            <img class="parkPicture" id="park-picture"/>
             <div class="parkInfoContainer" id="park-info-container">
-                <h1 class="parkName" id="park-name">Park Name Text</h1>
+                <h2 class="parkName" id="park-name">Park Name Text</h2>
                 <p class="parkOverview" id="park-overview">park overview</p>
                 <div class="parkOptionsContainer" id="park-options-container">
                     <div class="buttonRowOne">
-                        <button id="activity-btn" >Activities</button>
-                        <button>Visitor Info</button>
+                        <button class="activityBtn" id="activity-btn" >Activities</button>
+                        <button class="visitorBtn" id="visitor-btn">Visitor Info</button>
                     </div>
                     <div class="buttonRowTwo">
                         <button>Go Back</button>
