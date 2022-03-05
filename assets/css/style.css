@@ -4,9 +4,10 @@
   }
 
   /* header picture and text styles */
-  body {
-      background-color: #FCF6EE;
-  }
+body {
+    background-color: #FCF6EE;
+}
+
 .headerContainer{
     height: 15em;
     display: relative;
@@ -61,6 +62,7 @@
     padding: 100px 50px;
     border-radius: 15px;
     box-shadow: 1px 1px 40px 1px grey;
+    
 }
 
 .parkSelectionInput {

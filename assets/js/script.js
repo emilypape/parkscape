@@ -2,11 +2,24 @@ var parkSelectionInput = document.querySelector('#park-selection');
 var submitBtn = document.querySelector('#submit-btn');
 var activityBtn = document.querySelector('#activity-btn');
 var hikeList = document.querySelector('#dynamic-hike-list');
+
 // api key for the project
 var key = '2JLCuHgadecfJrBe7FWSG7jOky4xF2fjg5Q5O458';
 
+// function to set selected hikes to local storage
 function addToBucketlist() {
     // set hikes to local storage when clicked
+    var hike = this.textContent;
+    var selectedHikes = localStorage.getItem('hikes')
+
+    if(!selectedHikes) {
+        selectedHikes = JSON.stringify([hike]);
+    } else {
+        selectedHikes = JSON.parse(selectedHikes);
+        selectedHikes.push(hike);
+        selectedHikes = JSON.stringify(selectedHikes);
+    }
+    localStorage.setItem('hikes', selectedHikes);
 }
 
 // function that fetchest the national park API with necessary parameters
@@ -49,6 +62,7 @@ function createHikePage (parks, activities) {
             popularHikes.textContent = activities.data[i].title
             popularHikes.classList.add('popularHikesBtn')
             hikeList.appendChild(popularHikes);
+            popularHikes.addEventListener('click', addToBucketlist);
         }
     }
 }
@@ -72,5 +86,7 @@ function submitBtnClickEvent (e) {
     nationalParkFetch(parks);
 }
 
+
 submitBtn.addEventListener('click', submitBtnClickEvent);
 activityBtn.addEventListener('click', thingsToDoClickEvent);
+
