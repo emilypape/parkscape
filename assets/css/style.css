@@ -63,33 +63,36 @@
     box-shadow: 1px 1px 40px 1px grey;
 }
 
-.parkSelectionInput {
+#parkSelection{
     margin: -75px 0 25px 0;
     width: 100%;
-    height: 3em;
+    height: 4em;
     border: 2px solid #454E59;
     border-radius: 5px;
 }
 
-.dateSelectorsBox{
+.datebox{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     
 }
 
-.startDateInput {
-    margin: 10px 10px 0 0;
-    padding: .7em;
-    border: 2px solid #454E59;
-    border-radius: 5px;
+.datepicker{
+    display: flex;
+    flex-direction: column;
 }
 
-.endDateInput {
-    margin: 10px 0 0 20px;
+.dates{
+    
+    width: 100px;
     padding: .7em;
     border: 2px solid #454E59;
     border-radius: 5px;
+    
 }
+
+
 
 .submitBtn {
     padding: 1em;
@@ -177,9 +180,6 @@
     flex-direction: column;
    
 }
-
-#map {
-     height: 180px; }
 /* end visitor info styles */
 
 /* begin bucketList styles */
@@ -235,13 +235,4 @@
 /* utility classes */
 .hidden {
     display: none;
-}
-
-#parkSelection{
-    margin: -75px 0 25px 0;
-    width: 100%;
-    height: 3em;
-    border: 2px solid #454E59;
-    border-radius: 5px;
-
 }
