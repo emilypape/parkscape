@@ -46,6 +46,8 @@ function attachToBucketlist () {
     }
 }
 
+// PUT DRAG AND DROP FUNCTIONS HERE EMILY
+
 // function that fetchest the national park API with necessary parameters
 function nationalParkFetch (parks) {
     // park code will accept the typed in park name as the code, already checked
