@@ -2,6 +2,13 @@ var parkSelectionInput = document.querySelector('#park-selection');
 var submitBtn = document.querySelector('#submit-btn');
 var activityBtn = document.querySelector('#activity-btn');
 var hikeList = document.querySelector('#dynamic-hike-list');
+var bucketlistPage = document.querySelector('#bucketlist-container')
+var parkForm = document.querySelector('#park-form-container')
+var nationalParkPage = document.querySelector('#national-park-container')
+var vistorInfoPage = document.querySelector('#visitor-info-container')
+var bestHikesPage = document.querySelector('#best-hikes-container')
+var bucketlistBtn = document.querySelector('#bucketlist');
+var bucketlistHikesContainer = document.querySelector('#hike-bucketlist-todo');
 
 // api key for the project
 var key = '2JLCuHgadecfJrBe7FWSG7jOky4xF2fjg5Q5O458';
@@ -20,6 +27,22 @@ function addToBucketlist() {
         selectedHikes = JSON.stringify(selectedHikes);
     }
     localStorage.setItem('hikes', selectedHikes);
+}
+
+function attachToBucketlist () {
+    var getBucketlist = localStorage.getItem('hikes')
+    getBucketlist = JSON.parse(getBucketlist);
+    var addBucketlist = document.createElement('ul')
+    bucketlistHikesContainer.appendChild(addBucketlist);
+
+    
+    for(var i = 0; i < getBucketlist.length; i++) {
+        var bucketlistItems = document.createElement('li');
+        bucketlistItems.classList.add('hikesTodoList');
+        bucketlistItems.textContent = getBucketlist[i];
+
+        addBucketlist.appendChild(bucketlistItems);
+    }
 }
 
 // function that fetchest the national park API with necessary parameters
@@ -87,6 +110,26 @@ function submitBtnClickEvent (e) {
 }
 
 
+
+
 submitBtn.addEventListener('click', submitBtnClickEvent);
 activityBtn.addEventListener('click', thingsToDoClickEvent);
+
+
+
+// Trash Bin
+
+function bucketlistClickEvent() {
+  if (bucketlistPage.classList === "hidden") {
+    bucketlistPage.classList.remove("hidden");
+  }
+  parkForm.classList.add("hidden");
+  bestHikesPage.classList.add("hidden");
+  vistorInfoPage.classList.add("hidden");
+  nationalParkPage.classList.add("hidden");
+
+  attachToBucketlist();
+}
+
+bucketlistBtn.addEventListener("click", bucketlistClickEvent);
 

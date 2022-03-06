@@ -195,17 +195,57 @@ body {
     align-items: center;
 }
 
+.bucketlistTitle {
+    font-size: 26pt;
+    padding: 10px;
+}
+
 .listBoxes {
     display: flex;
 }
 
-.dragDropBox {
+.todoText {
+    font-weight: 700;
+    margin-top: -8.5em;
+    font-size: 16pt;
+    text-align: center;
+}
+
+.forLaterText {
+    margin: -9.5em;
+    font-weight: 700;
+    text-align: center;
+    font-size: 16pt;
+}
+
+.dragDropBox1 {
     background-color: #FCF6EE;
     color: black;
+    padding: 200px;
+    border-right: 3px solid #454E59;
+    border-left: 3px solid #454E59;
+    border-bottom: 3px solid #454E59;
+}
+
+.hikesTodoList {
+    background-color: #454E59;
+    color: white;
+    text-align: center;
+    border-radius: 3px;
+    padding: 5px;
+    margin-top: 5px;
 }
 
 .bucketlistDelete {
     background-color: red;
+    font-size: 24pt;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}
+
+.bucketlistDelete:hover {
+    font-size: 26pt;
 }
 /* footer styles */
 
