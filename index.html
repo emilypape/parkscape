@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ParkScape</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./assets/css/style.css"/>
 </head>
 <body>
@@ -45,12 +46,69 @@
                 <h2 class="parkName" id="park-name">Park Name Text</h2>
                 <p class="parkOverview" id="park-overview">park overview</p>
                 <div class="parkOptionsContainer" id="park-options-container">
-                    <div class="buttonRowOne">
+                    <div class="buttonContainer">
                         <button class="activityBtn" id="activity-btn" >Activities</button>
                         <button class="visitorBtn" id="visitor-btn">Visitor Info</button>
+                        <button class="gbBtn">Go Back</button>
                     </div>
-                    <div class="buttonRowTwo">
-                        <button>Go Back</button>
+                </div>
+            </div>
+        </div>
+        <div class="weatherInfoBox" id="weather-info-box">
+            <div class="forcastBoxes row" id="forcast-boxes">
+                <div class="col4">
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text">
+                          <span class="card-title">Card Title</span>
+                          <div class="card-image">
+                            <img src="https://www.nps.gov/common/uploads/structured_data/CD69DD56-E050-4F4E-DDF622317D38250E.jpg">
+                          </div>
+                          <p>test</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col4">
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text">
+                          <span class="card-title">Card Title</span>
+                          <div class="card-image">
+                            <img src="https://www.nps.gov/common/uploads/structured_data/CD69DD56-E050-4F4E-DDF622317D38250E.jpg">
+                          </div>
+                          <p>test</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col4">
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text">
+                          <span class="card-title">Card Title</span>
+                          <div class="card-image">
+                            <img src="https://www.nps.gov/common/uploads/structured_data/CD69DD56-E050-4F4E-DDF622317D38250E.jpg">
+                          </div>
+                          <p>test</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col4">
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text">
+                          <span class="card-title">Card Title</span>
+                          <div class="card-image">
+                            <img src="https://www.nps.gov/common/uploads/structured_data/CD69DD56-E050-4F4E-DDF622317D38250E.jpg">
+                          </div>
+                          <p>test</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col4">
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text">
+                          <span class="card-title">Card Title</span>
+                          <div class="card-image">
+                            <img src="https://www.nps.gov/common/uploads/structured_data/CD69DD56-E050-4F4E-DDF622317D38250E.jpg">
+                          </div>
+                          <p>test</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -71,10 +129,6 @@
         </div>
     </section>
     <!-- end hike info section -->
-
-    <!-- start weather forecast section -->
-
-    <!-- end weather forecast section -->
 
     <!-- start visitor info section -->
     <section class="visitorInfoContainer hidden" id="visitor-info-container">
@@ -117,6 +171,6 @@
     <!-- end footer section -->
     
 </body>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="./assets/js/script.js"></script>
 </html>
