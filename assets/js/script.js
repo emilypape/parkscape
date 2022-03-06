@@ -50,24 +50,41 @@ function submitBtnClickEvent (e) {
     nationalParkFetch(parks);
 }
 
+
+
 submitBtn.addEventListener('click', submitBtnClickEvent);
 activityBtn.addEventListener('click', thingsToDoClickEvent);
 
 // Script elements for park page
 
 let pInfoPage = function(parkInfo, toDoInfo){
-let parkNameEl = document.querySelector("#park-name");
-parkNameEl.textContent = parkInfo.data[0].name;
+    var weatherApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${parkInfo.data[0].latitude}&lon=${parkInfo.data[0].longitude}&appid=89de62b6d12dc85d6af194716b54e779`;
 
-let parkDescEl = document.querySelector("#park-overview");
-parkDescEl.textContent = parkInfo.data[0].description;
+    fetch(weatherApi).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (data) {
+                let fBoxEl = document.querySelectorAll("#weather-card");
+                for (let i = 0 ; i < fBoxEl.length ; i++) {
+                    fBoxEl[i].querySelector("img").setAttribute("src", "https://openweathermap.org/img/wn/" + data.daily[i].weather[0].icon + ".png");
+                    fBoxEl[i].querySelector("img").setAttribute("alt",  data.daily[i].weather[0].description);
+                    fBoxEl[i].querySelector("span").textContent = new Date(data.daily[i].dt * 1000).toLocaleDateString();
+                    fBoxEl[i].querySelector("p").textContent = data.daily[i].weather[0].description;
+                }
+            })
+        }
+    })
+    let parkNameEl = document.querySelector("#park-name");
+    parkNameEl.textContent = parkInfo.data[0].name;
 
-let parkImageEl = document.querySelector("#park-picture");
-parkImageEl.setAttribute("src", parkInfo.data[0].images[0].url);
-parkImageEl.setAttribute("alt", parkInfo.data[0].images[0].altText);
+    let parkDescEl = document.querySelector("#park-overview");
+    parkDescEl.textContent = parkInfo.data[0].description;
+
+    let parkImageEl = document.querySelector("#park-picture");
+    parkImageEl.setAttribute("src", parkInfo.data[0].images[0].url);
+    parkImageEl.setAttribute("alt", parkInfo.data[0].images[0].altText);
 };
 
 //end parkpage script
 
 
-nationalParkFetch("redwood");
+nationalParkFetch("abli");
