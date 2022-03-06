@@ -236,6 +236,10 @@ body {
     margin-top: 5px;
 }
 
+.hikesTodoList:hover {
+    background-color: #707454;
+}
+
 .bucketlistDelete {
     background-color: red;
     font-size: 24pt;

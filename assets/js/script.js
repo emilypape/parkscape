@@ -39,6 +39,7 @@ function attachToBucketlist () {
     for(var i = 0; i < getBucketlist.length; i++) {
         var bucketlistItems = document.createElement('li');
         bucketlistItems.classList.add('hikesTodoList');
+        bucketlistItems.draggable = 'true'
         bucketlistItems.textContent = getBucketlist[i];
 
         addBucketlist.appendChild(bucketlistItems);
@@ -90,6 +91,21 @@ function createHikePage (parks, activities) {
     }
 }
 
+// Section for click event listener functions
+
+// click event for the bucketlist navbar element- hides all other elements on site, and calls function to grab bucketlist items
+function bucketlistClickEvent() {
+    if (bucketlistPage.classList === "hidden") {
+      bucketlistPage.classList.remove("hidden");
+    }
+    parkForm.classList.add("hidden");
+    bestHikesPage.classList.add("hidden");
+    vistorInfoPage.classList.add("hidden");
+    nationalParkPage.classList.add("hidden");
+  
+    attachToBucketlist();
+  }
+
 // click listener function for the best hikes section
 function thingsToDoClickEvent(){
     var parks = parkSelectionInput.value 
@@ -111,25 +127,14 @@ function submitBtnClickEvent (e) {
 
 
 
-
+// event listener land
 submitBtn.addEventListener('click', submitBtnClickEvent);
 activityBtn.addEventListener('click', thingsToDoClickEvent);
+bucketlistBtn.addEventListener("click", bucketlistClickEvent);
 
 
 
 // Trash Bin
 
-function bucketlistClickEvent() {
-  if (bucketlistPage.classList === "hidden") {
-    bucketlistPage.classList.remove("hidden");
-  }
-  parkForm.classList.add("hidden");
-  bestHikesPage.classList.add("hidden");
-  vistorInfoPage.classList.add("hidden");
-  nationalParkPage.classList.add("hidden");
 
-  attachToBucketlist();
-}
-
-bucketlistBtn.addEventListener("click", bucketlistClickEvent);
 
