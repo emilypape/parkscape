@@ -7,6 +7,7 @@
   body {
       background-color: #FCF6EE;
   }
+  
 .headerContainer{
     height: 15em;
     display: relative;
@@ -138,6 +139,7 @@
     font-size: larger;
     width: 80%;
     align-self: center;
+    text-align: justify;
 }
 
 .activityBtn {
@@ -153,6 +155,11 @@
     cursor: pointer;
 }
 
+.activityBtn:hover {
+    opacity: .5;
+    box-shadow: none;
+}
+
 .visitorBtn {
     width: 90%;
     height: 40px;
@@ -164,6 +171,11 @@
     color: #FCF6EE;
     box-shadow: 2px 2px 2px #454E59;
     cursor: pointer;
+}
+
+.visitorBtn:hover {
+    opacity: .5;
+    box-shadow: none;
 }
 
 .gbBtn {

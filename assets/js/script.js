@@ -1,6 +1,14 @@
 var parkSelectionInput = document.querySelector('#park-selection');
 var submitBtn = document.querySelector('#submit-btn');
 var activityBtn = document.querySelector('#activity-btn');
+let parkInfoContain = document.querySelector("#national-park-container");
+let parkFormContain = document.querySelector("#park-form-container");
+let gbBtnEl = document.querySelector("#gb-btn");
+let visitBtnEl = document.querySelector("#visitor-btn");
+let activityBtnEl = document.querySelector('#activity-btn');
+let visitorPageContain = document.querySelector("#visitor-info-container");
+let activityPageContain = document.querySelector('#best-hikes-container');
+
 // api key for the project
 var key = '2JLCuHgadecfJrBe7FWSG7jOky4xF2fjg5Q5O458';
 
@@ -83,6 +91,21 @@ let pInfoPage = function(parkInfo, toDoInfo){
     parkImageEl.setAttribute("src", parkInfo.data[0].images[0].url);
     parkImageEl.setAttribute("alt", parkInfo.data[0].images[0].altText);
 };
+
+gbBtnEl.addEventListener('click', function () {
+    parkInfoContain.className = "nationalParkContainer hidden";
+    parkFormContain.className = "parkFormContainer";
+});
+
+visitBtnEl.addEventListener('click', function() {
+    parkInfoContain.className = "nationalParkContainer hidden";
+    visitorPageContain.className = "visitorInfoContainer";
+});
+
+activityBtnEl.addEventListener('click', function() {
+    parkInfoContain.className = "nationalParkContainer hidden";
+    activityPageContain.className = "bestHikesContainer";
+});
 
 //end parkpage script
 
