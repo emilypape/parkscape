@@ -7,7 +7,7 @@
   body {
       background-color: #FCF6EE;
   }
-  
+
 .headerContainer{
     height: 15em;
     display: relative;
@@ -186,6 +186,11 @@
     width: 100px;
     align-self: flex-end;
     margin-right: 5%;
+}
+
+.gbBtn:hover {
+    opacity: .5;
+    border-color: transparent;
 }
 
 .parkInfoContainer {
