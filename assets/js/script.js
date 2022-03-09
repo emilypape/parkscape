@@ -1,4 +1,3 @@
-
 var currentDay = moment()
 var fromValue = moment().format('YYYY-MM-DD')
 currentDay.add(1, "day")
