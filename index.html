@@ -10,6 +10,7 @@
         crossorigin="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./assets/css/style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <title>ParkScape</title>
 </head>
 
@@ -77,7 +78,7 @@
     
 
     <!-- national park information display -->
-    <section class="nationalParkContainer hidden" id="national-park-container">
+    <section class="nationalParkContainer" id="national-park-container">
         <div class="nationalParkBox">
             <img class="parkPicture" id="park-picture"/>
             <div class="parkInfoContainer" id="park-info-container">
@@ -176,14 +177,13 @@
         </div>
     </section>
     <!-- end national park information display -->
-    <section class="bestHikesContainer hidden" id="best-hikes-container">
+    <section class="bestHikesContainer" id="best-hikes-container">
         <div class="bestHikesBox">
-            <div class="hikeList">
+            <div class="hikeList" id="hike-list-container">
                 <h1 class="hikeTitleText">Top Rated Hikes</h1>
-                <button>hike</button>
-                <button>hike</button>
-                <button>hike</button>
-                <button>hike</button>
+                <div class="hikeList" id="dynamic-hike-list">
+                    
+                </div>
                 <p>*click on a hike to add it to your bucketlist!*</p>
             </div>
             <img src="./assets/images/hiking photo.jpeg" />
@@ -208,35 +208,36 @@
     <!-- end visitor info section -->
 
     <!-- start Bucketlist Section -->
-    <section class="bucketlistContainer hidden" id="bucketlist-container">
+    <section class="bucketlistContainer" id="bucketlist-container">
         <div class="bucketlistBox" id="bucketlist-box">
             <div class="bucketlistTitle">Bucketlist</div>
             <div class="listBoxes">
-                <div class="dragDropBox" id="drag-drop-todo">
+                <div class="dragDropBox1" id="drag-drop-todo">
                     <div class="textContainerOne">
                         <div class="todoText">To-Do</div>
-                    </div>
-                </div>
-                <div class="dragDropBox" id="drag-drop-for-later">
-                    <div class="textContainerTwo">
-                        <div class="forLaterText">For Later</div>
+                        <div class="hikeBucketlist" id="hike-bucketlist-todo">
+
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="bucketlistDelete" id="drag-drop-delete">Delete</div>
+            <div class="bucketlistFooter" id="bucketlist-footer"></div>
         </div>
     </section>
 
     <!-- footer section -->
-    <footer class="footerStyles">
+    <footer class="footerStyles hidden">
         <a class="npsLink" id="nps-link" href="https://www.nps.gov/index.htm">Visit NPS @</a>
     </footer>
     <!-- end footer section -->
-    
 </body>
+
+
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>

@@ -4,9 +4,10 @@
   }
 
   /* header picture and text styles */
-  body {
-      background-color: #FCF6EE;
-  }
+
+body {
+    background-color: #FCF6EE;
+}
 
 .headerContainer{
     height: 15em;
@@ -59,9 +60,10 @@
     flex-direction: column;
     /* background-color: #838772; */
     background-color: #707454;
-    padding: 150px 60px;
+    padding: 100px 50px;
     border-radius: 15px;
     box-shadow: 1px 1px 40px 1px grey;
+    
 }
 
 .formPage select {
@@ -99,7 +101,6 @@
 .submitBtn {
     padding: 1em;
     border-radius: 5px;
-    margin: 50px 0 -75px;
 }
 
 .submitBtn:hover {
@@ -122,8 +123,8 @@
     background-color: #958778;
     border-top: solid 5px #707454;
     color: white;
+    box-shadow: 1px 1px 40px 1px grey;
     width: 85%;
-    /* padding: 200px 350px; */
 }
 
 .parkPicture {
@@ -260,11 +261,29 @@
     background-color: #958778;
     border-top: solid 5px #707454;
     color: white;
+    box-shadow: 1px 1px 40px 1px grey;
+}
+
+.hikeTitleText {
+    font-size: 3em;
+    margin-top: 2px;
 }
 
 .hikeList {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    padding: 12px;
+}
+
+.popularHikesBtn {
+    width: 100%;
+    padding: 5px 50px;
+    color: #FCF6EE;
+    box-shadow: 2px 2px 2px #454E59;
+    background-image: linear-gradient(90deg, #707454 0%, #695E52 50%);
+    background-size: cover;
+    margin-bottom: 5px;
 }
 
 /* end hike list styles */
@@ -280,6 +299,7 @@
     background-color: #958778;
     border-top: solid 5px #707454;
     color: white;
+    box-shadow: 1px 1px 40px 1px grey;
 }
 
 .visitorInfoList {
@@ -301,19 +321,64 @@
     flex-direction: column;
     background-color: #454E59;
     align-items: center;
+    box-shadow: 1px 1px 40px 1px grey;
+}
+
+.bucketlistTitle {
+    font-size: 26pt;
+    padding: 10px;
 }
 
 .listBoxes {
     display: flex;
 }
 
-.dragDropBox {
+.todoText {
+    font-weight: 700;
+    margin-top: -8.5em;
+    font-size: 16pt;
+    text-align: center;
+}
+
+.forLaterText {
+    margin: -9.5em;
+    font-weight: 700;
+    text-align: center;
+    font-size: 16pt;
+}
+
+.dragDropBox1 {
     background-color: #FCF6EE;
     color: black;
+    padding: 200px;
+    border-right: 3px solid #454E59;
+    border-left: 3px solid #454E59;
+    border-bottom: 3px solid #454E59;
+}
+
+.hikesTodoList {
+    background-color: #454E59;
+    color: white;
+    text-align: center;
+    border-radius: 3px;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.hikesTodoList:hover {
+    background-color: #707454;
 }
 
 .bucketlistDelete {
     background-color: red;
+    font-size: 24pt;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}
+
+.bucketlistDelete:hover {
+    font-size: 26pt;
 }
 /* footer styles */
 
@@ -324,7 +389,7 @@
     padding: 15px;
     position: fixed;
     bottom: 0;
-    width: 98%;
+    width: 100%;
 } 
 
 .npsLink {

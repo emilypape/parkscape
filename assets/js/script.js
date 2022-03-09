@@ -2,18 +2,24 @@
 
 var parkSelectionInput = document.querySelector('#park-selection');
 var submitBtn = document.querySelector('#submit-btn');
+
+var activityBtn = document.querySelector('#activity-btn');
+var hikeList = document.querySelector('#dynamic-hike-list');
+var bucketlistPage = document.querySelector('#bucketlist-container');
+var parkForm = document.querySelector('#park-form-container');
+var vistorInfoPage = document.querySelector('#visitor-info-container');
+var bestHikesPage = document.querySelector('#best-hikes-container');
+var bucketlistBtn = document.querySelector('#bucketlist');
+var bucketlistHikesContainer = document.querySelector('#hike-bucketlist-todo');
+
 let parkInfoContain = document.querySelector("#national-park-container");
-let parkFormContain = document.querySelector("#park-form-container");
 let gbBtnEl = document.querySelector("#gb-btn");
 let visitBtnEl = document.querySelector("#visitor-btn");
-let activityBtnEl = document.querySelector('#activity-btn');
-let visitorPageContain = document.querySelector("#visitor-info-container");
-let activityPageContain = document.querySelector('#best-hikes-container');
 
 // end global variables
 
 // get time values
-var currentDay = moment()
+var currentDay = moment();
 var fromValue = moment().format('YYYY-MM-DD')
 currentDay.add(1, "day")
 var toValue = currentDay.format("YYYY-MM-DD")
@@ -37,8 +43,80 @@ fromEl.setAttribute("min", fromValue)
 
 //end time values 
 
+
 // api key for the project
 var key = '2JLCuHgadecfJrBe7FWSG7jOky4xF2fjg5Q5O458';
+
+// function to set selected hikes to local storage
+function addToBucketlist() {
+    // set hikes to local storage when clicked
+    var hike = this.textContent;
+    var selectedHikes = localStorage.getItem('hikes')
+
+    if(!selectedHikes) {
+        selectedHikes = JSON.stringify([hike]);
+    } else {
+        selectedHikes = JSON.parse(selectedHikes);
+        selectedHikes.push(hike);
+        selectedHikes = JSON.stringify(selectedHikes);
+    }
+    localStorage.setItem('hikes', selectedHikes);
+}
+
+function attachToBucketlist () {
+    var getBucketlist = localStorage.getItem('hikes')
+    getBucketlist = JSON.parse(getBucketlist);
+    var addBucketlist = document.createElement('ul')
+    bucketlistHikesContainer.appendChild(addBucketlist);
+
+    
+    for(var i = 0; i < getBucketlist.length; i++) {
+        var bucketlistItems = document.createElement('li');
+        bucketlistItems.classList.add('hikesTodoList');
+        bucketlistItems.id = 'bucketlist-items'
+        bucketlistItems.textContent = getBucketlist[i];
+
+        var deleteBtnEl = document.createElement('button');
+        deleteBtnEl.classList.add('deleteBtnEl');
+        deleteBtnEl.textContent = 'Delete'
+        deleteBtnEl.addEventListener('click', deleteFromBucketlist)
+
+        addBucketlist.appendChild(bucketlistItems);
+        bucketlistItems.appendChild(deleteBtnEl);
+    }
+}
+
+jQuery.fn.justtext = function() {
+  
+	return $(this)	.clone()
+			.children()
+			.remove()
+			.end()
+			.text();
+
+};
+
+function deleteFromBucketlist () {
+    var parentContainer = $(this).closest('#bucketlist-items');
+    var itemToDelete = parentContainer.justtext();
+    parentContainer.remove();
+    // get local storage
+    var selectedItemsArray = localStorage.getItem('hikes');
+
+    // turn local storage into an array
+    selectedItemsArray = JSON.parse(selectedItemsArray)
+    // rmove item from array
+    var index = selectedItemsArray.indexOf(itemToDelete)
+    if (index > -1) {
+        selectedItemsArray.splice(index, 1);
+    }
+    // turn array into JSON string
+    selectedItemsArray = JSON.stringify(selectedItemsArray);
+    // save new JSON in local storage
+    localStorage.setItem('hikes', selectedItemsArray);
+}
+
+// PUT DRAG AND DROP FUNCTIONS HERE EMILY
 
 // function that fetchest the national park API with necessary parameters
 function nationalParkFetch (parks) {
@@ -101,14 +179,51 @@ var mainPageSubmit= function () {
 
 function thingsToDoFetch(parks) {
     var thingsToDoUrl = `https://developer.nps.gov/api/v1/thingstodo?parkCode=${parks}&api_key=${key}`
-    fetch(thingsToDoUrl).then(function (response) {
-        if (response.ok) {
-            response.json().then(function (thingsToDoData) {
-                console.log(thingsToDoData);
+
+    fetch(thingsToDoUrl).then(function(response){
+        if(response.ok){
+            response.json().then(function(thingsToDoData){
+                createHikePage(parks,thingsToDoData);
             })
         }
     })
 }
+
+
+// function to sort the data, grab hike info and append to page
+function createHikePage (parks, activities) {
+    var hikes = 0
+    for(var i = 0; i < activities.data.length; i++ ) {
+        if(hikes === 5 ) {
+            return
+        }
+        if(activities.data[i].activities[0].name.toLowerCase() === 'hiking'){
+            hikes++
+            var popularHikes = document.createElement('button');
+            popularHikes.id = '#popular-hikes-btn'
+            popularHikes.textContent = activities.data[i].title
+            popularHikes.classList.add('popularHikesBtn')
+            hikeList.appendChild(popularHikes);
+            popularHikes.addEventListener('click', addToBucketlist);
+        }
+    }
+}
+
+// Section for click event listener functions
+
+// click event for the bucketlist navbar element- hides all other elements on site, and calls function to grab bucketlist items
+function bucketlistClickEvent() {
+    if (bucketlistPage.classList === "hidden") {
+      bucketlistPage.classList.remove("hidden");
+    }
+    parkForm.classList.add("hidden");
+    bestHikesPage.classList.add("hidden");
+    vistorInfoPage.classList.add("hidden");
+    nationalParkPage.classList.add("hidden");
+  
+    attachToBucketlist();
+  }
+
 
 // function that fetchest the national park API with necessary parameters
 function nationalParkFetch(parks) {
@@ -123,6 +238,7 @@ function nationalParkFetch(parks) {
         }
     })
 }
+
 
 // click listener function for the best hikes section
 function thingsToDoClickEvent() {
@@ -148,6 +264,11 @@ function submitBtnClickEvent(e) {
 
 
 
+
+// event listener land
+submitBtn.addEventListener('click', submitBtnClickEvent);
+activityBtn.addEventListener('click', thingsToDoClickEvent);
+bucketlistBtn.addEventListener("click", bucketlistClickEvent);
 
 
 // Script elements for park page
@@ -198,3 +319,4 @@ submitBtn.addEventListener('click', submitBtnClickEvent);
 activityBtnEl.addEventListener('click', thingsToDoClickEvent);
 
 //end parkpage script
+
