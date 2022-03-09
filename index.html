@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ParkScape</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./assets/css/style.css"/>
+    <title>ParkScape</title>
 </head>
+
 <body>
     <!-- header image and application title -->
-    <header class="headerContainer"> 
-        <img class="titleImage" src="./assets/images/croppedrockies.png"/>
+    <header class="headerContainer">
+        <img class="titleImage" src="./assets/images/croppedrockies.png" />
         <div class="appTitle">ParkScape</div>
     </header>
     <!-- header image and application title -->
@@ -26,18 +31,51 @@
     <section class="parkFormContainer hidden" id="park-form-container">
         <div class="formBox" id="form-box">
             <form class="formPage">
-                <input type="text" class="parkSelectionInput" placeholder="  National Park Selection" id="park-selection" name="National Park"><br>
-                <div class="dateSelectorsBox">
-                    <input type="text" class="startDateInput" placeholder="From" id="start-date">
-                    <div>
-                        <input type="text" class="endDateInput" placeholder="To" id="end-date"><br>
+                <select name="national park" id="park-selection">
+                    <option>Select a National Park</option>
+                    <option value="acad">Acadia National Park (ME) </option>
+                    <option value="arch">Arches National Park (UT)</option>
+                    <option value="brca">Bryce Canyon Nationa Park (UT)</option>
+                    <option value="cuva">Cuyahoga Valley Park (OH)</option>
+                    <option value="cach">Canyon de Chelly(AZ)</option>
+                    <option value="chis">Channel Islands(CA)</option>
+                    <option value="deva">Death Valley(CA)</option>
+                    <option value="dena">Denali National Park(AK)</option>
+                    <option value="gaar">Gates of the Arctic National Park(AK)</option>
+                    <option value="grca">Grand Canyon (AZ)</option>
+                    <option value="grte">Grand Teton National Park (WY)</option>
+                    <option value="grsm">Great Smoky Mountains (TN)</option>
+                    <option value="hosp">Hot Springs National Park(AR)</option>
+                    <option value="jotr">Joshua Tree National Park (CA)</option>
+                    <option value="mora">Mount Rainier National Park (WA)</option>
+                    <option value="olym">Olympic National Park (WA)</option>
+                    <option value="redw">Redwood National Park(CA)</option>
+                    <option value="seki">Sequoia & Kings Canyon National Park (CA)</option>
+                    <option value="wrst">Wrangell-St Elias National Park(AK)</option>
+                    <option value="yell">Yellowstone National Park (WY)</option>
+                    <option value="yose">Yosemite National Park (CA)</option>
+                    <option value="zion">Zion National Park (UT)</option>
+
+                </select>
+                <!-- <input type="text" class="parkSelectionInput" placeholder="  National Park Selection" id="park-selection" name="National Park">--><br>
+                <div class="datebox">
+                    <div class="datepicker">
+                        <label for="from">From</label>
+                        <input type="date" class="dates" id="from" name="from" >
+                    </div>
+                    <div class="datepicker">
+                        <label for="to">To</label>
+                        <input type="date" class="dates" id="to" name="to">
                     </div>
                 </div>
-                <button class="submitBtn" id="submit-btn">Submit</button>
+                <button class="submitBtn" id="submit-btn" type="button">Submit</button>
             </form>
         </div>
     </section>
     <!-- end national park selection form -->
+
+    <section id="mapbox" style="height: 180px;"></section>
+
     <!-- national park information display -->
     <section class="nationalParkContainer" id="national-park-container">
         <div class="nationalParkBox">
@@ -131,6 +169,7 @@
                           </div>
                           <p>test</p>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -147,7 +186,7 @@
                 <button>hike</button>
                 <p>*click on a hike to add it to your bucketlist!*</p>
             </div>
-            <img src="./assets/images/hiking photo.jpeg"/>
+            <img src="./assets/images/hiking photo.jpeg" />
         </div>
     </section>
     <!-- end hike info section -->
@@ -155,7 +194,7 @@
     <!-- start visitor info section -->
     <section class="visitorInfoContainer hidden" id="visitor-info-container">
         <div class="visitorInfoBox">
-            <div class="googleMap" id="google-map">Google Map</div>
+            <div class="Map" id="map"> Map</div>
             <div class="visitorInfoList">
                 <h1 class="visitorInfoTitle" id="visitor-info-park-name">Visitor Info: Insert Park</h1>
                 <div class="parkHours" id="park-hours">Park Hours: insert hours</div>
@@ -193,6 +232,14 @@
     <!-- end footer section -->
     
 </body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="./assets/js/script.js"></script>
+
 </html>
