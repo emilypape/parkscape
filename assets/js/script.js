@@ -1,11 +1,5 @@
-var currentDay = moment()
-var fromValue = moment().format('YYYY-MM-DD')
-currentDay.add(1, "day")
-var toValue = currentDay.format("YYYY-MM-DD")
-currentDay.add(6, "day")
-var maxValue = currentDay.format("YYYY-MM-DD")
-currentDay.add(1, "day")
-var toMaxValue = currentDay.format("YYYY-MM-DD")
+// set up necessary variables
+
 var parkSelectionInput = document.querySelector('#park-selection');
 var submitBtn = document.querySelector('#submit-btn');
 let parkInfoContain = document.querySelector("#national-park-container");
@@ -15,6 +9,18 @@ let visitBtnEl = document.querySelector("#visitor-btn");
 let activityBtnEl = document.querySelector('#activity-btn');
 let visitorPageContain = document.querySelector("#visitor-info-container");
 let activityPageContain = document.querySelector('#best-hikes-container');
+
+// end global variables
+
+// get time values
+var currentDay = moment()
+var fromValue = moment().format('YYYY-MM-DD')
+currentDay.add(1, "day")
+var toValue = currentDay.format("YYYY-MM-DD")
+currentDay.add(6, "day")
+var maxValue = currentDay.format("YYYY-MM-DD")
+currentDay.add(1, "day")
+var toMaxValue = currentDay.format("YYYY-MM-DD")
 var fromEl = document.getElementById("from")
 
 fromEl.setAttribute("value", fromValue)
@@ -28,6 +34,9 @@ toEl.setAttribute("max", toMaxValue)
 
 toEl.setAttribute("min", toValue)
 fromEl.setAttribute("min", fromValue)
+
+//end time values 
+
 // api key for the project
 var key = '2JLCuHgadecfJrBe7FWSG7jOky4xF2fjg5Q5O458';
 
@@ -41,9 +50,9 @@ function nationalParkFetch (parks) {
             response.json().then(function(parkData) {
                 //console.log(parkData);
                 pInfoPage(parkData);
-            )}
+            })
          }
-       )}
+       })
     }
 
 
@@ -52,7 +61,7 @@ var mainPageSubmit= function () {
     var parkSelect = document.getElementById("park-selection")
     
 
-    document.getElementById("map").remove()
+    //document.getElementById("map").remove()
     var parkCode = parkSelect.options[parkSelect.selectedIndex].value
     var nationalParkApi = `https://developer.nps.gov/api/v1/parks?parkCode=${parkCode}&api_key=dXZ1UXqLPTZyKYJ7zQInqlAulIuLnYesbCyyDJFR`;
     fetch(nationalParkApi).then(function (response) {
@@ -64,8 +73,7 @@ var mainPageSubmit= function () {
 
 
                 var L = window.L
-                var mapEl = document.createElement("section")
-                mapEl.setAttribute("id", "map")
+                var mapEl = document.querySelector("#map");
                 mapEl.style.height = "180px"
                 mapEl.style.width = "180px"
                 document.getElementById("mapbox").appendChild(mapEl)
@@ -110,7 +118,7 @@ function nationalParkFetch(parks) {
     fetch(NatParkUrl).then(function (response) {
         if (response.ok) {
             response.json().then(function (parkData) {
-                console.log(parkData);
+                pInfoPage(parkData);
             })
         }
     })
@@ -130,20 +138,21 @@ function submitBtnClickEvent(e) {
     e.preventDefault();
     // capture the input for park selection
     var parks = parkSelectionInput.value;
-    console.log(parkSelectionInput.value);
+    //console.log(parkSelectionInput.value);
     // call the function with the info fetch with the argument 'parks' which is the input value
     nationalParkFetch(parks);
+    parkInfoContain.className = "nationalParkContainer";
+    parkFormContain.className = "parkFormContainer hidden";
     mainPageSubmit();
 }
 
 
 
-submitBtn.addEventListener('click', submitBtnClickEvent);
-activityBtn.addEventListener('click', thingsToDoClickEvent);
+
 
 // Script elements for park page
 
-let pInfoPage = function(parkInfo, toDoInfo){
+let pInfoPage = function(parkInfo){
     var weatherApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${parkInfo.data[0].latitude}&lon=${parkInfo.data[0].longitude}&appid=89de62b6d12dc85d6af194716b54e779`;
 
     fetch(weatherApi).then(function (response) {
@@ -184,5 +193,8 @@ activityBtnEl.addEventListener('click', function() {
     parkInfoContain.className = "nationalParkContainer hidden";
     activityPageContain.className = "bestHikesContainer";
 });
+
+submitBtn.addEventListener('click', submitBtnClickEvent);
+activityBtnEl.addEventListener('click', thingsToDoClickEvent);
 
 //end parkpage script
