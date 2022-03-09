@@ -10,6 +10,7 @@ var bestHikesPage = document.querySelector('#best-hikes-container')
 var bucketlistBtn = document.querySelector('#bucketlist');
 var bucketlistHikesContainer = document.querySelector('#hike-bucketlist-todo');
 
+
 // api key for the project
 var key = '2JLCuHgadecfJrBe7FWSG7jOky4xF2fjg5Q5O458';
 
@@ -39,11 +40,47 @@ function attachToBucketlist () {
     for(var i = 0; i < getBucketlist.length; i++) {
         var bucketlistItems = document.createElement('li');
         bucketlistItems.classList.add('hikesTodoList');
-        bucketlistItems.draggable = 'true'
+        bucketlistItems.id = 'bucketlist-items'
         bucketlistItems.textContent = getBucketlist[i];
 
+        var deleteBtnEl = document.createElement('button');
+        deleteBtnEl.classList.add('deleteBtnEl');
+        deleteBtnEl.textContent = 'Delete'
+        deleteBtnEl.addEventListener('click', deleteFromBucketlist)
+
         addBucketlist.appendChild(bucketlistItems);
+        bucketlistItems.appendChild(deleteBtnEl);
     }
+}
+
+jQuery.fn.justtext = function() {
+  
+	return $(this)	.clone()
+			.children()
+			.remove()
+			.end()
+			.text();
+
+};
+
+function deleteFromBucketlist () {
+    var parentContainer = $(this).closest('#bucketlist-items');
+    var itemToDelete = parentContainer.justtext();
+    parentContainer.remove();
+    // get local storage
+    var selectedItemsArray = localStorage.getItem('hikes');
+
+    // turn local storage into an array
+    selectedItemsArray = JSON.parse(selectedItemsArray)
+    // rmove item from array
+    var index = selectedItemsArray.indexOf(itemToDelete)
+    if (index > -1) {
+        selectedItemsArray.splice(index, 1);
+    }
+    // turn array into JSON string
+    selectedItemsArray = JSON.stringify(selectedItemsArray);
+    // save new JSON in local storage
+    localStorage.setItem('hikes', selectedItemsArray);
 }
 
 // PUT DRAG AND DROP FUNCTIONS HERE EMILY
@@ -133,6 +170,7 @@ function submitBtnClickEvent (e) {
 submitBtn.addEventListener('click', submitBtnClickEvent);
 activityBtn.addEventListener('click', thingsToDoClickEvent);
 bucketlistBtn.addEventListener("click", bucketlistClickEvent);
+
 
 
 
