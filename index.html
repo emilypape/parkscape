@@ -7,12 +7,119 @@
     <link rel="stylesheet" href="./assets/css/style.css"/>
     <title>ParkScape</title>
 </head>
-<header class="headerContainer"> 
-    <img class="titleImage" src="./assets/images/croppedrockies.png"/>
-    <div class="appTitle">ParkScape</div>
-</header>
 <body>
+    <!-- header image and application title -->
+    <header class="headerContainer"> 
+        <img class="titleImage" src="./assets/images/croppedrockies.png"/>
+        <div class="appTitle">ParkScape</div>
+    </header>
+    <!-- header image and application title -->
+
+    <section class="navbarContainer">
+        <a class="navText" id="homepage"> Homepage </a>
+        <a class="navText" id="bucketlist"> Bucketlist </a>
+        <a class="navText" id="learn-more"> Learn More </a>
+    </section>
+
+    <!-- national park selection form -->
+    <section class="parkFormContainer" id="park-form-container">
+        <div class="formBox" id="form-box">
+            <form class="formPage">
+                <input type="text" class="parkSelectionInput" placeholder="  National Park Selection" id="park-selection" name="National Park"><br>
+                <div class="dateSelectorsBox">
+                    <input type="text" class="startDateInput" placeholder="From" id="start-date">
+                    <div>
+                        <input type="text" class="endDateInput" placeholder="To" id="end-date"><br>
+                    </div>
+                </div>
+                <button class="submitBtn" id="submit-btn">Submit</button>
+            </form>
+        </div>
+    </section>
+    <!-- end national park selection form -->
+    <!-- national park information display -->
+    <section class="nationalParkContainer hidden" id="national-park-container">
+        <div class="nationalParkBox">
+            <div class="parkPicture" id="park-picture">
+                picture
+            </div>
+            <div class="parkInfoContainer" id="park-info-container">
+                <h1 class="parkName" id="park-name">Park Name Text</h1>
+                <p class="parkOverview" id="park-overview">park overview</p>
+                <div class="parkOptionsContainer" id="park-options-container">
+                    <div class="buttonRowOne">
+                        <button>Best Hikes</button>
+                        <button>Forecast</button>
+                    </div>
+                    <div class="buttonRowTwo">
+                        <button>Visitor Info</button>
+                        <button>Go Back</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end national park information display -->
+    <section class="bestHikesContainer hidden" id="best-hikes-container">
+        <div class="bestHikesBox">
+            <div class="hikeList">
+                <h1 class="hikeTitleText">Top Rated Hikes</h1>
+                <button>hike</button>
+                <button>hike</button>
+                <button>hike</button>
+                <button>hike</button>
+                <p>*click on a hike to add it to your bucketlist!*</p>
+            </div>
+            <img src="./assets/images/hiking photo.jpeg"/>
+        </div>
+    </section>
+    <!-- end hike info section -->
+
+    <!-- start weather forecast section -->
+
+    <!-- end weather forecast section -->
+
+    <!-- start visitor info section -->
+    <section class="visitorInfoContainer hidden" id="visitor-info-container">
+        <div class="visitorInfoBox">
+            <div class="googleMap" id="google-map">Google Map</div>
+            <div class="visitorInfoList">
+                <h1 class="visitorInfoTitle" id="visitor-info-park-name">Visitor Info: Insert Park</h1>
+                <div class="parkHours" id="park-hours">Park Hours: insert hours</div>
+                <div class="holidayHours" id="holiday-hours">Holiday Hours: insert Hours</div>
+                <div class="contactUs" id="contact-us">Contact Us: insert phone number</div>
+            </div>
+        </div>
+    </section>
+    <!-- end visitor info section -->
+
+    <!-- start Bucketlist Section -->
+    <section class="bucketlistContainer hidden" id="bucketlist-container">
+        <div class="bucketlistBox" id="bucketlist-box">
+            <div class="bucketlistTitle">Bucketlist</div>
+            <div class="listBoxes">
+                <div class="dragDropBox" id="drag-drop-todo">
+                    <div class="textContainerOne">
+                        <div class="todoText">To-Do</div>
+                    </div>
+                </div>
+                <div class="dragDropBox" id="drag-drop-for-later">
+                    <div class="textContainerTwo">
+                        <div class="forLaterText">For Later</div>
+                    </div>
+                </div>
+            </div>
+            <div class="bucketlistDelete" id="drag-drop-delete">Delete</div>
+        </div>
+    </section>
+
+    <!-- footer section -->
+    <footer class="footerStyles">
+        <a class="npsLink" id="nps-link" href="https://www.nps.gov/index.htm">Visit NPS @</a>
+    </footer>
+    <!-- end footer section -->
     
 </body>
+
 <script src="./assets/js/script.js"></script>
 </html>
