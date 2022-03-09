@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin="" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css"/>
     <title>ParkScape</title>
 </head>
 
@@ -28,7 +28,7 @@
     </section>
 
     <!-- national park selection form -->
-    <section class="parkFormContainer" id="park-form-container">
+    <section class="parkFormContainer hidden" id="park-form-container">
         <div class="formBox" id="form-box">
             <form class="formPage">
                 <select name="national park" id="park-selection">
@@ -77,22 +77,99 @@
     <section id="mapbox" style="height: 180px;"></section>
 
     <!-- national park information display -->
-    <section class="nationalParkContainer hidden" id="national-park-container">
+    <section class="nationalParkContainer" id="national-park-container">
         <div class="nationalParkBox">
-            <div class="parkPicture" id="park-picture">
-                picture
-            </div>
+            <img class="parkPicture" id="park-picture"/>
             <div class="parkInfoContainer" id="park-info-container">
-                <h1 class="parkName" id="park-name">Park Name Text</h1>
+                <h2 class="parkName" id="park-name">Park Name Text</h2>
                 <p class="parkOverview" id="park-overview">park overview</p>
                 <div class="parkOptionsContainer" id="park-options-container">
-                    <div class="buttonRowOne">
-                        <button>Best Hikes</button>
-                        <button>Forecast</button>
+                    <div class="buttonContainer">
+                        <button class="activityBtn" id="activity-btn" >Activities</button>
+                        <button class="visitorBtn" id="visitor-btn">Visitor Info</button>
+                        <button class="gbBtn" id="gb-btn">Go Back</button>
                     </div>
-                    <div class="buttonRowTwo">
-                        <button>Visitor Info</button>
-                        <button>Go Back</button>
+                </div>
+            </div>
+        </div>
+        <div class="weatherInfoBox" id="weather-info-box">
+            <div class="forcastBoxes row" id="forcast-boxes">
+                <div class="col4">
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text" id="weather-card">
+                          <span class="card-title">Card Title</span>
+                          <div class="card-image">
+                            <img id="weather-image" src="">
+                          </div>
+                          <p>test</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col4">
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text" id="weather-card">
+                          <span class="card-title">Card Title</span>
+                          <div class="card-image">
+                            <img id="weather-image" src="">
+                          </div>
+                          <p>test</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col4">
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text" id="weather-card">
+                          <span class="card-title">Card Title</span>
+                          <div class="card-image">
+                            <img id="weather-image" src="">
+                          </div>
+                          <p>test</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col4">
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text" id="weather-card">
+                          <span class="card-title">Card Title</span>
+                          <div class="card-image">
+                            <img id="weather-image" src="">
+                          </div>
+                          <p>test</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col4">
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text" id="weather-card">
+                          <span class="card-title">Card Title</span>
+                          <div class="card-image">
+                            <img id="weather-image" src="">
+                          </div>
+                          <p>test</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col4">
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text" id="weather-card">
+                          <span class="card-title">Card Title</span>
+                          <div class="card-image">
+                            <img id="weather-image" src="">
+                          </div>
+                          <p>test</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col4">
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text" id="weather-card">
+                          <span class="card-title">Card Title</span>
+                          <div class="card-image">
+                            <img id="weather-image" src="">
+                          </div>
+                          <p>test</p>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -113,10 +190,6 @@
         </div>
     </section>
     <!-- end hike info section -->
-
-    <!-- start weather forecast section -->
-
-    <!-- end weather forecast section -->
 
     <!-- start visitor info section -->
     <section class="visitorInfoContainer hidden" id="visitor-info-container">
@@ -159,11 +232,13 @@
     <!-- end footer section -->
     
 </body>
+
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="./assets/js/script.js"></script>
 
