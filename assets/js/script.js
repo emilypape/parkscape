@@ -16,6 +16,8 @@ let parkInfoContain = document.querySelector("#national-park-container");
 let gbBtnEl = document.querySelector("#gb-btn");
 let visitBtnEl = document.querySelector("#visitor-btn");
 
+let homePageBtn = document.querySelector("#homepage");
+
 // end global variables
 
 // get time values
@@ -213,13 +215,11 @@ function createHikePage (parks, activities) {
 
 // click event for the bucketlist navbar element- hides all other elements on site, and calls function to grab bucketlist items
 function bucketlistClickEvent() {
-    if (bucketlistPage.classList === "hidden") {
-      bucketlistPage.classList.remove("hidden");
-    }
+    bucketlistPage.classList.remove("hidden");
     parkForm.classList.add("hidden");
     bestHikesPage.classList.add("hidden");
     vistorInfoPage.classList.add("hidden");
-    nationalParkPage.classList.add("hidden");
+    parkInfoContain.classList.add("hidden");
   
     attachToBucketlist();
   }
@@ -234,6 +234,7 @@ function nationalParkFetch(parks) {
         if (response.ok) {
             response.json().then(function (parkData) {
                 pInfoPage(parkData);
+                visitorPageInfo(parkData);
             })
         }
     })
@@ -258,7 +259,7 @@ function submitBtnClickEvent(e) {
     // call the function with the info fetch with the argument 'parks' which is the input value
     nationalParkFetch(parks);
     parkInfoContain.className = "nationalParkContainer";
-    parkFormContain.className = "parkFormContainer hidden";
+    parkForm.className = "parkFormContainer hidden";
     mainPageSubmit();
 }
 
@@ -302,21 +303,39 @@ let pInfoPage = function(parkInfo){
 
 gbBtnEl.addEventListener('click', function () {
     parkInfoContain.className = "nationalParkContainer hidden";
-    parkFormContain.className = "parkFormContainer";
+    parkForm.className = "parkFormContainer";
 });
 
 visitBtnEl.addEventListener('click', function() {
     parkInfoContain.className = "nationalParkContainer hidden";
-    visitorPageContain.className = "visitorInfoContainer";
+    vistorInfoPage.className = "visitorInfoContainer";
 });
 
-activityBtnEl.addEventListener('click', function() {
+activityBtn.addEventListener('click', function() {
     parkInfoContain.className = "nationalParkContainer hidden";
-    activityPageContain.className = "bestHikesContainer";
+    bestHikesPage.className = "bestHikesContainer";
 });
 
+homePageBtn.addEventListener('click', function () {
+    location.reload();
+})
 submitBtn.addEventListener('click', submitBtnClickEvent);
-activityBtnEl.addEventListener('click', thingsToDoClickEvent);
+activityBtn.addEventListener('click', thingsToDoClickEvent);
+
+let visitorPageInfo = function (pData) {
+    let pdata =  pData.data[0];
+   
+   let pHoursInfoEl = document.querySelector("#park-hours");
+   let oHours = pdata.operatingHours[0].standardHours;
+   pHoursInfoEl.innerText = "Park Hours:\n" + "Monday: " + oHours.monday + '\n' + "Tuesday: " + oHours.tuesday + '\n' + "Wednesday: " + oHours.wednesday + '\n' + "Thursday: " + oHours.thursday + '\n' + "Friday: " + oHours.friday + '\n' + "Saturday: " + oHours.saturday + '\n' + "Sunday: " + oHours.sunday + '\n';
+
+//    let hHoursEl = document.querySelector('#holiday-hours');
+//    hHoursEl.innerText = "";
+
+    let cUsInfoEl = document.querySelector('#contact-us');
+    cUsInfoEl.innerText = "Contact Us:\n" + "Phone: " + pdata.contacts.phoneNumbers[0].phoneNumber + '\nEmail: ' + pdata.contacts.emailAddresses[0].emailAddress + '\n';
+
+}
 
 //end parkpage script
 

@@ -34,6 +34,7 @@
             <form class="formPage">
                 <select name="national park" id="park-selection">
                     <option>Select a National Park</option>
+                    <option value="abli">Abraham Lincoln Birthplace (ME) </option>
                     <option value="acad">Acadia National Park (ME) </option>
                     <option value="arch">Arches National Park (UT)</option>
                     <option value="brca">Bryce Canyon Nationa Park (UT)</option>
@@ -78,7 +79,7 @@
     
 
     <!-- national park information display -->
-    <section class="nationalParkContainer" id="national-park-container">
+    <section class="nationalParkContainer hidden" id="national-park-container">
         <div class="nationalParkBox">
             <img class="parkPicture" id="park-picture"/>
             <div class="parkInfoContainer" id="park-info-container">
@@ -177,7 +178,7 @@
         </div>
     </section>
     <!-- end national park information display -->
-    <section class="bestHikesContainer" id="best-hikes-container">
+    <section class="bestHikesContainer hidden" id="best-hikes-container">
         <div class="bestHikesBox">
             <div class="hikeList" id="hike-list-container">
                 <h1 class="hikeTitleText">Top Rated Hikes</h1>
@@ -198,9 +199,9 @@
                 <div class="Map" id="map"></div>
             </section>
             <div class="visitorInfoList">
-                <h2 class="visitorInfoTitle" id="visitor-info-park-name">Visitor Info: Insert Park</h2>
+                <h2 class="visitorInfoTitle" id="visitor-info-park-name">Visitor Info:</h2>
                 <div class="parkHours" id="park-hours">Park Hours: insert hours</div>
-                <div class="holidayHours" id="holiday-hours">Holiday Hours: insert Hours</div>
+                <!-- <div class="holidayHours" id="holiday-hours">Holiday Hours: insert Hours</div> -->
                 <div class="contactUs" id="contact-us">Contact Us: insert phone number</div>
             </div>
         </div>
@@ -208,7 +209,7 @@
     <!-- end visitor info section -->
 
     <!-- start Bucketlist Section -->
-    <section class="bucketlistContainer" id="bucketlist-container">
+    <section class="bucketlistContainer hidden" id="bucketlist-container">
         <div class="bucketlistBox" id="bucketlist-box">
             <div class="bucketlistTitle">Bucketlist</div>
             <div class="listBoxes">
@@ -226,14 +227,11 @@
     </section>
 
     <!-- footer section -->
-    <footer class="footerStyles hidden">
+    <footer class="footerStyles">
         <a class="npsLink" id="nps-link" href="https://www.nps.gov/index.htm">Visit NPS @</a>
     </footer>
     <!-- end footer section -->
 </body>
-
-
-
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>

@@ -307,6 +307,11 @@ body {
     flex-direction: column;
    
 }
+
+.visitorInfoTitle {
+    margin: 5px;
+    text-align: center;
+}
 /* end visitor info styles */
 
 /* begin bucketList styles */
