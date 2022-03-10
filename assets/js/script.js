@@ -9,6 +9,7 @@ var bucketlistPage = document.querySelector('#bucketlist-container');
 var parkForm = document.querySelector('#park-form-container');
 var vistorInfoPage = document.querySelector('#visitor-info-container');
 var bestHikesPage = document.querySelector('#best-hikes-container');
+var goBackBtnHP = document.querySelector('#go-back-btn');
 var bucketlistBtn = document.querySelector('#bucketlist');
 var bucketlistHikesContainer = document.querySelector('#hike-bucketlist-todo');
 
@@ -215,6 +216,11 @@ function createHikePage (parks, activities) {
 // Section for click event listener functions
 
 // click event for the bucketlist navbar element- hides all other elements on site, and calls function to grab bucketlist items
+function goBackToParkPageClickEvent () {
+    bestHikesPage.classList.add('hidden')
+    parkInfoContain.classList.remove('hidden');
+}
+
 function bucketlistClickEvent() {
     bucketlistPage.classList.remove("hidden");
     parkForm.classList.add("hidden");
@@ -271,6 +277,7 @@ function submitBtnClickEvent(e) {
 submitBtn.addEventListener('click', submitBtnClickEvent);
 activityBtn.addEventListener('click', thingsToDoClickEvent);
 bucketlistBtn.addEventListener("click", bucketlistClickEvent);
+goBackBtnHP.addEventListener('click', goBackToParkPageClickEvent);
 
 
 // Script elements for park page

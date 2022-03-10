@@ -287,6 +287,17 @@ body {
     margin-bottom: 5px;
 }
 
+.goBackBtn {
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #707454;
+    color: white;
+    width: 100px;
+    align-self: flex-end;
+    margin-right: 8%;
+    margin-top: 2%;
+}
+
 /* end hike list styles */
 
 /* start visitor info styles */
