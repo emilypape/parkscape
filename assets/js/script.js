@@ -20,7 +20,7 @@ let gbBtnEl = document.querySelector("#gb-btn");
 let visitBtnEl = document.querySelector("#visitor-btn");
 
 let homePageBtn = document.querySelector("#homepage");
-let parkSelectionEl = document.querySelector('#park-selection');
+let parkSelectionEl = document.querySelector('#parks-selection');
 
 // end global variables
 
@@ -142,29 +142,10 @@ function deleteFromBucketlist () {
 
 // PUT DRAG AND DROP FUNCTIONS HERE EMILY
 
-// function that fetchest the national park API with necessary parameters
-function nationalParkFetch (parks) {
-    // park code will accept the typed in park name as the code, already checked
-    var NatParkUrl = `https://developer.nps.gov/api/v1/parks?parkCode=${parks}&api_key=${key}`
-    // park name and info that goes along with park parameter fetch
-    fetch(NatParkUrl).then(function(response){
-        if(response.ok) {
-            response.json().then(function(parkData) {
-                //console.log(parkData);
-                pInfoPage(parkData);
-            })
-         }
-       })
-    }
-
-
 //user input National park selection
-var mainPageSubmit= function () {
-    var parkSelect = document.getElementById("park-selection")
-    
-
+var mainPageSubmit = function (parkCode) {
     //document.getElementById("map").remove()
-    var parkCode = parkSelect.options[parkSelect.selectedIndex].value
+    //var parkCode = parkData.options[parkSelectionEl.selectedIndex].value
     var nationalParkApi = `https://developer.nps.gov/api/v1/parks?parkCode=${parkCode}&api_key=dXZ1UXqLPTZyKYJ7zQInqlAulIuLnYesbCyyDJFR`;
     fetch(nationalParkApi).then(function (response) {
         if (response.ok) {
@@ -273,6 +254,7 @@ function nationalParkFetch(parks) {
             response.json().then(function (parkData) {
                 pInfoPage(parkData);
                 visitorPageInfo(parkData);
+                mainPageSubmit(parkData.data[0].parkCode);
             })
         }
     })
@@ -298,7 +280,6 @@ function submitBtnClickEvent(e) {
     nationalParkFetch(parks);
     parkInfoContain.className = "nationalParkContainer";
     parkForm.className = "parkFormContainer hidden";
-    mainPageSubmit();
 }
 
 
@@ -342,8 +323,7 @@ let pInfoPage = function(parkInfo){
 };
 
 gbBtnEl.addEventListener('click', function () {
-    parkInfoContain.className = "nationalParkContainer hidden";
-    parkForm.className = "parkFormContainer";
+    location.reload();
 });
 
 visitBtnEl.addEventListener('click', function() {
