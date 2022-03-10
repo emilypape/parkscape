@@ -20,6 +20,7 @@ let gbBtnEl = document.querySelector("#gb-btn");
 let visitBtnEl = document.querySelector("#visitor-btn");
 
 let homePageBtn = document.querySelector("#homepage");
+let parkSelectionEl = document.querySelector('#park-selection');
 
 // end global variables
 
@@ -51,6 +52,24 @@ fromEl.setAttribute("min", fromValue)
 
 // api key for the project
 var key = '2JLCuHgadecfJrBe7FWSG7jOky4xF2fjg5Q5O458';
+
+let fetchParkNames = function() {
+    let parkNameApi = 'https://developer.nps.gov/api/v1/parks?api_key=2JLCuHgadecfJrBe7FWSG7jOky4xF2fjg5Q5O458';
+
+    fetch(parkNameApi).then(function(response) {
+        if (response.ok) {
+            response.json().then(function(data) {
+                console.log(data.data.length);
+                for (let i = 0 ; i < data.data.length ; i++) {
+                    let optionCreateEl = document.createElement('option');
+                    optionCreateEl.setAttribute('value', data.data[i].parkCode);
+                    optionCreateEl.innerText = data.data[i].name + " (" + data.data[i].states + ")";
+                    parkSelectionEl.appendChild(optionCreateEl);
+                }
+            });
+        }
+    });
+};
 
 // function to set selected hikes to local storage
 function addToBucketlist() {
@@ -360,3 +379,4 @@ let visitorPageInfo = function (pData) {
 
 //end parkpage script
 
+fetchParkNames();
