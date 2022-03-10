@@ -59,7 +59,6 @@ let fetchParkNames = function() {
     fetch(parkNameApi).then(function(response) {
         if (response.ok) {
             response.json().then(function(data) {
-                console.log(data.data.length);
                 for (let i = 0 ; i < data.data.length ; i++) {
                     let optionCreateEl = document.createElement('option');
                     optionCreateEl.setAttribute('value', data.data[i].parkCode);
@@ -144,13 +143,10 @@ function deleteFromBucketlist () {
 
 //user input National park selection
 var mainPageSubmit = function (parkCode) {
-    //document.getElementById("map").remove()
-    //var parkCode = parkData.options[parkSelectionEl.selectedIndex].value
     var nationalParkApi = `https://developer.nps.gov/api/v1/parks?parkCode=${parkCode}&api_key=dXZ1UXqLPTZyKYJ7zQInqlAulIuLnYesbCyyDJFR`;
     fetch(nationalParkApi).then(function (response) {
         if (response.ok) {
             response.json().then(function (data) {
-                console.log(data);
                 const lat = data.data[0].latitude;
                 const long = data.data[0].longitude;
 
@@ -189,7 +185,6 @@ function thingsToDoFetch(parks) {
         if(response.ok){
             response.json().then(function(thingsToDoData){
                 createHikePage(parks,thingsToDoData);
-                console.log(thingsToDoData);
             })
         }
     })
@@ -199,10 +194,19 @@ function thingsToDoFetch(parks) {
 // function to sort the data, grab hike info and append to page
 function createHikePage (parks, activities) {
     var hikes = 0
+    if (!activities.data.length) {
+        let nActivitiesFound = document.createElement('button');
+            nActivitiesFound.id = '#popular-hikes-btn';
+            nActivitiesFound.textContent = "No Activities Reported";
+            nActivitiesFound.addEventListener('click', goBackToParkPageClickEvent);
+            hikeList.appendChild(nActivitiesFound);
+            return
+    }
+
     for(var i = 0; i < activities.data.length; i++ ) {
         if(hikes === 5 ) {
             return
-        }
+        } 
         if(activities.data[i].activities[0].name.toLowerCase() === 'hiking' || 'backpacking' || 'stargazing' || 'recreation' || 'walking'){
             hikes++
             var popularHikes = document.createElement('button');
