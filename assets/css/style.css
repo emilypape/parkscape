@@ -22,7 +22,7 @@ body {
 
 .appTitle{
     color: white;
-    margin: -100px 5px;
+    margin: -103px 5px;
     font-size: 60pt;
     text-align: end;
     text-shadow: 2px 2px 8px black;
@@ -58,11 +58,11 @@ body {
 .formPage {
     display: flex;
     flex-direction: column;
-    /* background-color: #838772; */
     background-color: #707454;
-    padding: 100px 50px;
+    padding: 75px;
     border-radius: 15px;
     box-shadow: 1px 1px 40px 1px grey;
+    margin: 25px 0 100px 0;
     
 }
 
@@ -262,6 +262,7 @@ body {
     border-top: solid 5px #707454;
     color: white;
     box-shadow: 1px 1px 40px 1px grey;
+    margin: 35px 0;
 }
 
 .hikeTitleText {
@@ -327,6 +328,7 @@ body {
     background-color: #454E59;
     align-items: center;
     box-shadow: 1px 1px 40px 1px grey;
+    margin: 25px 0 100px 0;
 }
 
 .bucketlistTitle {
@@ -336,6 +338,7 @@ body {
 
 .listBoxes {
     display: flex;
+    width: 40em;
 }
 
 .todoText {
@@ -345,12 +348,6 @@ body {
     text-align: center;
 }
 
-.forLaterText {
-    margin: -9.5em;
-    font-weight: 700;
-    text-align: center;
-    font-size: 16pt;
-}
 
 .dragDropBox1 {
     background-color: #FCF6EE;
@@ -359,9 +356,11 @@ body {
     border-right: 3px solid #454E59;
     border-left: 3px solid #454E59;
     border-bottom: 3px solid #454E59;
+    width: 40em;
 }
 
 .hikesTodoList {
+    display: grid;
     background-color: #454E59;
     color: white;
     text-align: center;
@@ -370,7 +369,7 @@ body {
     margin-top: 5px;
 }
 
-.hikesTodoList:hover {
+.deleteBtnEl:hover {
     background-color: #707454;
 }
 

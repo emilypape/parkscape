@@ -186,6 +186,7 @@ function thingsToDoFetch(parks) {
         if(response.ok){
             response.json().then(function(thingsToDoData){
                 createHikePage(parks,thingsToDoData);
+                console.log(thingsToDoData);
             })
         }
     })
@@ -199,7 +200,7 @@ function createHikePage (parks, activities) {
         if(hikes === 5 ) {
             return
         }
-        if(activities.data[i].activities[0].name.toLowerCase() === 'hiking'){
+        if(activities.data[i].activities[0].name.toLowerCase() === 'hiking' || 'backpacking' || 'stargazing' || 'recreation' || 'walking'){
             hikes++
             var popularHikes = document.createElement('button');
             popularHikes.id = '#popular-hikes-btn'
