@@ -66,8 +66,8 @@ body {
     
 }
 
-.formPage select {
-    display: block;
+.formPage input {
+    padding: 0 15px!important;
 }
 
 .parkSelectionInput {
@@ -408,13 +408,12 @@ body {
 
 .footerStyles {
     background-color: #454E59;
-    /* display: flex; */
+    display: flex;
     margin: 50px 0 0 0;
     padding: 15px;
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 60px;
 } 
 
 .npsLink {
