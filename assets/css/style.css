@@ -395,6 +395,15 @@ body {
 .bucketlistDelete:hover {
     font-size: 26pt;
 }
+
+/* learn more page */
+.parkscapeBio {
+    text-align: center;
+    margin: 5em;
+    font-size: 16pt;
+    color: #454E59;
+}
+
 /* footer styles */
 
 .footerStyles {
