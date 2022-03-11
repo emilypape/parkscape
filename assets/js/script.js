@@ -150,11 +150,11 @@ var mainPageSubmit = function (parkCode) {
                 const lat = data.data[0].latitude;
                 const long = data.data[0].longitude;
 
-
+                
                 var L = window.L
                 var mapEl = document.querySelector("#map");
-                mapEl.style.height = "180px"
-                mapEl.style.width = "180px"
+                mapEl.style.height = "500px"
+                mapEl.style.width = "600px"
                 document.getElementById("mapbox").appendChild(mapEl)
                 var map = L.map('map')
                 map.setView([51.505, -0.09], 13);
@@ -169,6 +169,7 @@ var mainPageSubmit = function (parkCode) {
                 L.marker([lat, long]).addTo(map)
                     .bindPopup(data.data[0].fullName)
                     .openPopup();
+                    
             })
 
         } else {
@@ -334,6 +335,7 @@ visitBtnEl.addEventListener('click', function() {
     parkInfoContain.className = "nationalParkContainer hidden";
     vistorInfoPage.className = "visitorInfoContainer";
 });
+
 
 activityBtn.addEventListener('click', function() {
     parkInfoContain.className = "nationalParkContainer hidden";
