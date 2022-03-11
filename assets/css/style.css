@@ -776,15 +776,13 @@ body {
 }
 
 .visitorInfoBox {
-    
-
     background-color: #958778;
     border-top: solid 5px #707454;
     color: white;
     box-shadow: 1px 1px 40px 1px grey;
     width: 75%;
     height: 85%;
-    
+    margin: 25px 0 100px 0;
 }
 
 .visitorInfoList {
@@ -802,6 +800,10 @@ body {
 #mapbox{
     margin: 0.5em;
     float: left;
+}
+
+.Map {
+    z-index: 0;
 }
 
 /* end visitor info styles */
