@@ -10,6 +10,7 @@ var parkForm = document.querySelector('#park-form-container');
 var vistorInfoPage = document.querySelector('#visitor-info-container');
 var bestHikesPage = document.querySelector('#best-hikes-container');
 var goBackBtnHP = document.querySelector('#go-back-btn');
+var goBackBtnVP = document.querySelector('#goback-btn');
 var bucketlistBtn = document.querySelector('#bucketlist');
 var bucketlistHikesContainer = document.querySelector('#hike-bucketlist-todo');
 var learnMoreNavEl = document.querySelector('#learn-more');
@@ -257,6 +258,11 @@ function goBackToParkPageClickEvent () {
     parkInfoContain.classList.remove('hidden');
 }
 
+function leaveVisitorPageClickEvent () {
+    vistorInfoPage.classList.add('hidden');
+    parkInfoContain.classList.remove('hidden');
+}
+
 function bucketlistClickEvent() {
     bucketlistPage.classList.remove("hidden");
     parkForm.classList.add("hidden");
@@ -317,6 +323,7 @@ bucketlistBtn.addEventListener("click", bucketlistClickEvent);
 goBackBtnHP.addEventListener('click', goBackToParkPageClickEvent);
 learnMoreNavEl.addEventListener('click', learnMorePageClickEvent);
 closeModal.addEventListener('click', closeModalClickEvent);
+goBackBtnVP.addEventListener('click', leaveVisitorPageClickEvent);
 
 
 // Script elements for park page
