@@ -878,3 +878,67 @@ body {
 .hidden {
     display: none;
 }
+
+@media screen and (max-width: 500px) {
+    .appTitle {
+        margin: -155px 25px;
+    }
+
+    .titleImage {
+        width: auto;
+        margin: 0;
+
+    }
+
+    .navbarContainer {
+        padding: 3px;
+    }
+    .navbarContainer .navText{
+        font-size: 15px;
+    }
+
+    .nationalParkBox {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .parkPicture {
+        width: 95%;
+    }
+
+    .forcastBoxes {
+        flex-direction: column;
+    }
+
+    .card .card-image {
+        max-width: 100px;
+        margin-left: 40%;
+    }
+
+    .col4 {
+        width: 90%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .bestHikesBox {
+        margin-top: 0;
+    }
+
+    .hikeImg {
+        width: 100%;
+    }
+
+    .visitorInfoBox {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .goBackBtn {
+        align-self: center;
+    }
+
+    .footerStyles {
+        bottom: auto;
+    }
+}
