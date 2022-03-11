@@ -14,12 +14,15 @@ var bucketlistBtn = document.querySelector('#bucketlist');
 var bucketlistHikesContainer = document.querySelector('#hike-bucketlist-todo');
 var learnMoreNavEl = document.querySelector('#learn-more');
 var learnMorePage = document.querySelector('#learn-more-page');
+var modalDisplay = document.querySelector('#modal-el');
+var closeModal = document.querySelector('#close-modal');
 
 let parkInfoContain = document.querySelector("#national-park-container");
 let gbBtnEl = document.querySelector("#gb-btn");
 let visitBtnEl = document.querySelector("#visitor-btn");
 
 let homePageBtn = document.querySelector("#homepage");
+let parkSelectionEl = document.querySelector('#parks-selection');
 
 // end global variables
 
@@ -52,8 +55,26 @@ fromEl.setAttribute("min", fromValue)
 // api key for the project
 var key = '2JLCuHgadecfJrBe7FWSG7jOky4xF2fjg5Q5O458';
 
+let fetchParkNames = function() {
+    let parkNameApi = 'https://developer.nps.gov/api/v1/parks?api_key=2JLCuHgadecfJrBe7FWSG7jOky4xF2fjg5Q5O458';
+
+    fetch(parkNameApi).then(function(response) {
+        if (response.ok) {
+            response.json().then(function(data) {
+                for (let i = 0 ; i < data.data.length ; i++) {
+                    let optionCreateEl = document.createElement('option');
+                    optionCreateEl.setAttribute('value', data.data[i].parkCode);
+                    optionCreateEl.innerText = data.data[i].name + " (" + data.data[i].states + ")";
+                    parkSelectionEl.appendChild(optionCreateEl);
+                }
+            });
+        }
+    });
+};
+
 // function to set selected hikes to local storage
 function addToBucketlist() {
+    modalDisplay.classList.remove('hidden');
     // set hikes to local storage when clicked
     var hike = this.textContent;
     var selectedHikes = localStorage.getItem('hikes')
@@ -123,42 +144,20 @@ function deleteFromBucketlist () {
 
 // PUT DRAG AND DROP FUNCTIONS HERE EMILY
 
-// function that fetchest the national park API with necessary parameters
-function nationalParkFetch (parks) {
-    // park code will accept the typed in park name as the code, already checked
-    var NatParkUrl = `https://developer.nps.gov/api/v1/parks?parkCode=${parks}&api_key=${key}`
-    // park name and info that goes along with park parameter fetch
-    fetch(NatParkUrl).then(function(response){
-        if(response.ok) {
-            response.json().then(function(parkData) {
-                //console.log(parkData);
-                pInfoPage(parkData);
-            })
-         }
-       })
-    }
-
-
 //user input National park selection
-var mainPageSubmit= function () {
-    var parkSelect = document.getElementById("park-selection")
-    
-
-    //document.getElementById("map").remove()
-    var parkCode = parkSelect.options[parkSelect.selectedIndex].value
+var mainPageSubmit = function (parkCode) {
     var nationalParkApi = `https://developer.nps.gov/api/v1/parks?parkCode=${parkCode}&api_key=dXZ1UXqLPTZyKYJ7zQInqlAulIuLnYesbCyyDJFR`;
     fetch(nationalParkApi).then(function (response) {
         if (response.ok) {
             response.json().then(function (data) {
-                console.log(data);
                 const lat = data.data[0].latitude;
                 const long = data.data[0].longitude;
 
-
+                
                 var L = window.L
                 var mapEl = document.querySelector("#map");
-                mapEl.style.height = "180px"
-                mapEl.style.width = "180px"
+                mapEl.style.height = "500px"
+                mapEl.style.width = "600px"
                 document.getElementById("mapbox").appendChild(mapEl)
                 var map = L.map('map')
                 map.setView([51.505, -0.09], 13);
@@ -173,6 +172,7 @@ var mainPageSubmit= function () {
                 L.marker([lat, long]).addTo(map)
                     .bindPopup(data.data[0].fullName)
                     .openPopup();
+                    
             })
 
         } else {
@@ -189,7 +189,6 @@ function thingsToDoFetch(parks) {
         if(response.ok){
             response.json().then(function(thingsToDoData){
                 createHikePage(parks,thingsToDoData);
-                console.log(thingsToDoData);
             })
         }
     })
@@ -199,10 +198,19 @@ function thingsToDoFetch(parks) {
 // function to sort the data, grab hike info and append to page
 function createHikePage (parks, activities) {
     var hikes = 0
+    if (!activities.data.length) {
+        let nActivitiesFound = document.createElement('button');
+            nActivitiesFound.id = '#popular-hikes-btn';
+            nActivitiesFound.textContent = "No Activities Reported";
+            nActivitiesFound.addEventListener('click', goBackToParkPageClickEvent);
+            hikeList.appendChild(nActivitiesFound);
+            return
+    }
+
     for(var i = 0; i < activities.data.length; i++ ) {
         if(hikes === 5 ) {
             return
-        }
+        } 
         if(activities.data[i].activities[0].name.toLowerCase() === 'hiking' || 'backpacking' || 'stargazing' || 'recreation' || 'walking'){
             hikes++
             var popularHikes = document.createElement('button');
@@ -218,6 +226,10 @@ function createHikePage (parks, activities) {
 // Section for click event listener functions
 
 // click event for the bucketlist navbar element- hides all other elements on site, and calls function to grab bucketlist items
+function closeModalClickEvent() {
+    modalDisplay.classList.add('hidden');
+}
+
 function learnMorePageClickEvent () {
     learnMorePage.classList.remove('hidden');
     parkForm.classList.add("hidden");
@@ -239,7 +251,7 @@ function bucketlistClickEvent() {
     vistorInfoPage.classList.add("hidden");
     parkInfoContain.classList.add("hidden");
     learnMorePage.classList.add('hidden');
-  
+
     attachToBucketlist();
   }
 
@@ -254,6 +266,7 @@ function nationalParkFetch(parks) {
             response.json().then(function (parkData) {
                 pInfoPage(parkData);
                 visitorPageInfo(parkData);
+                mainPageSubmit(parkData.data[0].parkCode);
             })
         }
     })
@@ -279,7 +292,6 @@ function submitBtnClickEvent(e) {
     nationalParkFetch(parks);
     parkInfoContain.className = "nationalParkContainer";
     parkForm.className = "parkFormContainer hidden";
-    mainPageSubmit();
 }
 
 
@@ -291,6 +303,7 @@ activityBtn.addEventListener('click', thingsToDoClickEvent);
 bucketlistBtn.addEventListener("click", bucketlistClickEvent);
 goBackBtnHP.addEventListener('click', goBackToParkPageClickEvent);
 learnMoreNavEl.addEventListener('click', learnMorePageClickEvent);
+closeModal.addEventListener('click', closeModalClickEvent);
 
 
 // Script elements for park page
@@ -323,14 +336,14 @@ let pInfoPage = function(parkInfo){
 };
 
 gbBtnEl.addEventListener('click', function () {
-    parkInfoContain.className = "nationalParkContainer hidden";
-    parkForm.className = "parkFormContainer";
+    location.reload();
 });
 
 visitBtnEl.addEventListener('click', function() {
     parkInfoContain.className = "nationalParkContainer hidden";
     vistorInfoPage.className = "visitorInfoContainer";
 });
+
 
 activityBtn.addEventListener('click', function() {
     parkInfoContain.className = "nationalParkContainer hidden";
@@ -360,3 +373,4 @@ let visitorPageInfo = function (pData) {
 
 //end parkpage script
 
+fetchParkNames();
