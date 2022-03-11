@@ -526,7 +526,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #707454;
-    padding: 75px;
+    padding: 45px 120px;
     border-radius: 15px;
     box-shadow: 1px 1px 40px 1px grey;
     margin: 25px 0 100px 0;
