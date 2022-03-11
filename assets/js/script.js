@@ -205,6 +205,11 @@ function thingsToDoFetch(parks) {
 
 // function to sort the data, grab hike info and append to page
 function createHikePage (parks, activities) {
+    var currentHikeList = $('.popularHikesBtn');
+    if(currentHikeList) {
+        currentHikeList.remove()
+    };
+
     var hikes = 0
     if (!activities.data.length) {
         let nActivitiesFound = document.createElement('button');
