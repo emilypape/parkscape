@@ -90,6 +90,7 @@ function addToBucketlist() {
 }
 
 function attachToBucketlist () {
+    bucketlistHikesContainer.removeChild(addBucketlist);
     var getBucketlist = localStorage.getItem('hikes')
     getBucketlist = JSON.parse(getBucketlist);
     var addBucketlist = document.createElement('ul')
