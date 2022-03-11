@@ -428,6 +428,40 @@ body {
 }
 /* end footer styles */
 
+/* modal styles */
+.eModal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modalBox {
+    background-color: #fefefe;
+    margin: 20% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: ;
+    width: 25%;
+}
+
+.modalTitle {
+    font-size: 3em;
+    text-align: center;
+    FONT-WEIGHT: 400;
+    margin: 1rem;
+}
+
+.modalTextBox {
+    text-align: center;
+    padding: 20PX;
+    font-size: 1em;
+}
+
 /* utility classes */
 .hidden {
     display: none;

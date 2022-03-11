@@ -14,6 +14,8 @@ var bucketlistBtn = document.querySelector('#bucketlist');
 var bucketlistHikesContainer = document.querySelector('#hike-bucketlist-todo');
 var learnMoreNavEl = document.querySelector('#learn-more');
 var learnMorePage = document.querySelector('#learn-more-page');
+var modalDisplay = document.querySelector('#modal-el');
+var closeModal = document.querySelector('#close-modal');
 
 let parkInfoContain = document.querySelector("#national-park-container");
 let gbBtnEl = document.querySelector("#gb-btn");
@@ -54,6 +56,7 @@ var key = '2JLCuHgadecfJrBe7FWSG7jOky4xF2fjg5Q5O458';
 
 // function to set selected hikes to local storage
 function addToBucketlist() {
+    modalDisplay.classList.remove('hidden');
     // set hikes to local storage when clicked
     var hike = this.textContent;
     var selectedHikes = localStorage.getItem('hikes')
@@ -218,6 +221,10 @@ function createHikePage (parks, activities) {
 // Section for click event listener functions
 
 // click event for the bucketlist navbar element- hides all other elements on site, and calls function to grab bucketlist items
+function closeModalClickEvent() {
+    modalDisplay.classList.add('hidden');
+}
+
 function learnMorePageClickEvent () {
     learnMorePage.classList.remove('hidden');
     parkForm.classList.add("hidden");
@@ -239,7 +246,7 @@ function bucketlistClickEvent() {
     vistorInfoPage.classList.add("hidden");
     parkInfoContain.classList.add("hidden");
     learnMorePage.classList.add('hidden');
-  
+
     attachToBucketlist();
   }
 
@@ -291,6 +298,7 @@ activityBtn.addEventListener('click', thingsToDoClickEvent);
 bucketlistBtn.addEventListener("click", bucketlistClickEvent);
 goBackBtnHP.addEventListener('click', goBackToParkPageClickEvent);
 learnMoreNavEl.addEventListener('click', learnMorePageClickEvent);
+closeModal.addEventListener('click', closeModalClickEvent);
 
 
 // Script elements for park page
