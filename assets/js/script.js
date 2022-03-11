@@ -89,13 +89,20 @@ function addToBucketlist() {
     localStorage.setItem('hikes', selectedHikes);
 }
 
-function attachToBucketlist () {
+function attachToBucketlist () {  
+    var currentUl = $('.bucketListListContainer');
+
+    if(currentUl.length) {
+        currentUl.remove();
+    }
+
     var getBucketlist = localStorage.getItem('hikes')
     getBucketlist = JSON.parse(getBucketlist);
     var addBucketlist = document.createElement('ul')
+    addBucketlist.classList.add('bucketListListContainer');
     bucketlistHikesContainer.appendChild(addBucketlist);
 
-    
+
     for(var i = 0; i < getBucketlist.length; i++) {
         var bucketlistItems = document.createElement('li');
         bucketlistItems.classList.add('hikesTodoList');
@@ -110,6 +117,7 @@ function attachToBucketlist () {
         addBucketlist.appendChild(bucketlistItems);
         bucketlistItems.appendChild(deleteBtnEl);
     }
+    
 }
 
 jQuery.fn.justtext = function() {
