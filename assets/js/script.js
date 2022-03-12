@@ -57,7 +57,7 @@ fromEl.setAttribute("min", fromValue)
 var key = '2JLCuHgadecfJrBe7FWSG7jOky4xF2fjg5Q5O458';
 
 let fetchParkNames = function() {
-    let parkNameApi = 'https://developer.nps.gov/api/v1/parks?api_key=2JLCuHgadecfJrBe7FWSG7jOky4xF2fjg5Q5O458';
+    let parkNameApi = 'https://developer.nps.gov/api/v1/parks?limit=600&api_key=2JLCuHgadecfJrBe7FWSG7jOky4xF2fjg5Q5O458';
 
     fetch(parkNameApi).then(function(response) {
         if (response.ok) {
