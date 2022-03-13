@@ -10,7 +10,6 @@
         crossorigin="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./assets/css/style.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <title>ParkScape</title>
 </head>
 
@@ -169,7 +168,7 @@
         <div class="bestHikesBox">
             <div class="hikeList" id="hike-list-container">
                 <h1 class="hikeTitleText">Top Rated Activities</h1>
-                <div class="hikeList" id="dynamic-hike-list">
+                <div class="hikeList hikeListScript" id="dynamic-hike-list">
                     
                 </div>
                 <p>*click on an activity to add it to your bucketlist!*</p>
@@ -189,8 +188,11 @@
             <div class="visitorInfoList">
                 <h2 class="visitorInfoTitle" id="visitor-info-park-name">Visitor Info:</h2>
                 <div class="parkHours" id="park-hours">Park Hours: insert hours</div>
+                <br>
+                <br>
                 <!-- <div class="holidayHours" id="holiday-hours">Holiday Hours: insert Hours</div> -->
                 <div class="contactUs" id="contact-us">Contact Us: insert phone number</div>
+                <button class="goBackBtn" id="goback-btn">Go Back</button>
             </div>
         </div>
     </section>

@@ -10,6 +10,7 @@ var parkForm = document.querySelector('#park-form-container');
 var vistorInfoPage = document.querySelector('#visitor-info-container');
 var bestHikesPage = document.querySelector('#best-hikes-container');
 var goBackBtnHP = document.querySelector('#go-back-btn');
+var goBackBtnVP = document.querySelector('#goback-btn');
 var bucketlistBtn = document.querySelector('#bucketlist');
 var bucketlistHikesContainer = document.querySelector('#hike-bucketlist-todo');
 var learnMoreNavEl = document.querySelector('#learn-more');
@@ -56,7 +57,7 @@ fromEl.setAttribute("min", fromValue)
 var key = '2JLCuHgadecfJrBe7FWSG7jOky4xF2fjg5Q5O458';
 
 let fetchParkNames = function() {
-    let parkNameApi = 'https://developer.nps.gov/api/v1/parks?api_key=2JLCuHgadecfJrBe7FWSG7jOky4xF2fjg5Q5O458';
+    let parkNameApi = 'https://developer.nps.gov/api/v1/parks?limit=600&api_key=2JLCuHgadecfJrBe7FWSG7jOky4xF2fjg5Q5O458';
 
     fetch(parkNameApi).then(function(response) {
         if (response.ok) {
@@ -89,13 +90,20 @@ function addToBucketlist() {
     localStorage.setItem('hikes', selectedHikes);
 }
 
-function attachToBucketlist () {
+function attachToBucketlist () {  
+    var currentUl = $('.bucketListListContainer');
+
+    if(currentUl.length) {
+        currentUl.remove();
+    }
+
     var getBucketlist = localStorage.getItem('hikes')
     getBucketlist = JSON.parse(getBucketlist);
     var addBucketlist = document.createElement('ul')
+    addBucketlist.classList.add('bucketListListContainer');
     bucketlistHikesContainer.appendChild(addBucketlist);
 
-    
+
     for(var i = 0; i < getBucketlist.length; i++) {
         var bucketlistItems = document.createElement('li');
         bucketlistItems.classList.add('hikesTodoList');
@@ -110,6 +118,7 @@ function attachToBucketlist () {
         addBucketlist.appendChild(bucketlistItems);
         bucketlistItems.appendChild(deleteBtnEl);
     }
+    
 }
 
 jQuery.fn.justtext = function() {
@@ -160,7 +169,7 @@ var mainPageSubmit = function (parkCode) {
                 mapEl.style.width = "600px"
                 document.getElementById("mapbox").appendChild(mapEl)
                 var map = L.map('map')
-                map.setView([51.505, -0.09], 13);
+                
                 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
                     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
                     maxZoom: 18,
@@ -172,7 +181,7 @@ var mainPageSubmit = function (parkCode) {
                 L.marker([lat, long]).addTo(map)
                     .bindPopup(data.data[0].fullName)
                     .openPopup();
-                    
+                map.setView([lat, long], 13);
             })
 
         } else {
@@ -197,6 +206,11 @@ function thingsToDoFetch(parks) {
 
 // function to sort the data, grab hike info and append to page
 function createHikePage (parks, activities) {
+    var currentHikeList = $('.popularHikesBtn');
+    if(currentHikeList) {
+        currentHikeList.remove()
+    };
+
     var hikes = 0
     if (!activities.data.length) {
         let nActivitiesFound = document.createElement('button');
@@ -241,6 +255,11 @@ function learnMorePageClickEvent () {
 
 function goBackToParkPageClickEvent () {
     bestHikesPage.classList.add('hidden')
+    parkInfoContain.classList.remove('hidden');
+}
+
+function leaveVisitorPageClickEvent () {
+    vistorInfoPage.classList.add('hidden');
     parkInfoContain.classList.remove('hidden');
 }
 
@@ -304,6 +323,7 @@ bucketlistBtn.addEventListener("click", bucketlistClickEvent);
 goBackBtnHP.addEventListener('click', goBackToParkPageClickEvent);
 learnMoreNavEl.addEventListener('click', learnMorePageClickEvent);
 closeModal.addEventListener('click', closeModalClickEvent);
+goBackBtnVP.addEventListener('click', leaveVisitorPageClickEvent);
 
 
 // Script elements for park page
