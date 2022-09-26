@@ -584,4 +584,43 @@ body {
   .footerStyles {
     bottom: auto;
   }
+
+  .modalBox {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .title {
+    padding-top: 1em;
+    font-size: 1em;
+  }
+
+  .navText {
+    font-size: 10pt;
+  }
+
+  .formPage {
+    padding: 40px 100px;
+  }
+
+  .bestHikesBox {
+    padding: 0;
+    margin-left: 25px;
+  }
+
+  .modalBox {
+    margin: 20em, 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .bucketlistBox {
+    width: 80%;
+  }
+
+  .Map {
+    max-height: 200px;
+    max-width: 250px;
+  }
 }
