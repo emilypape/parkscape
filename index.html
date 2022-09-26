@@ -1,241 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-        crossorigin="" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="./assets/css/style.css"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <title>ParkScape</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- header image and application title -->
     <header class="headerContainer">
-        <img class="titleImage" src="./assets/images/croppedrockies.png" />
-        <div class="appTitle">ParkScape</div>
+      <img class="titleImage" src="./assets/images/background.jpg" />
     </header>
     <!-- header image and application title -->
-    
+
     <section class="navbarContainer">
+      <div class="navbarContainer">
+        <div class="title">ParkScape</div>
+      </div>
+      <div class="navbarContainer">
         <a class="navText" id="homepage"> Homepage </a>
         <a class="navText" id="bucketlist"> Bucketlist </a>
-        <a class="navText" id="learn-more"> Learn More </a>
+        <a class="navText" target="_blank" id="nps-link" href="https://www.nps.gov/index.htm">Visit NPS </a>
+      </div>
     </section>
-    
+
     <!-- Modal Structure -->
     <div class="eModal hidden" id="modal-el">
-        <div class="modalBox" id="close-modal">
-            <h1 class="modalTitle">Added to BucketList</h1>
-            <p class="modalTextBox">This activity has been added to your bucketlist! If you wish to remove it you can go to your bucketlist and select 'Delete'</p>
-        </div>
+      <div class="modalBox" id="close-modal">
+        <iconify-icon class="modalTitle check" icon="emojione:white-heavy-check-mark"></iconify-icon>
+        <h1 class="modalTitle">Added to BucketList</h1>
+      </div>
     </div>
     <!-- national park selection form -->
     <section class="parkFormContainer" id="park-form-container">
-        <div class="formBox" id="form-box">
-            <form class="formPage">
-                <input name="national park"  id="park-selection" list="parks-selection" placeholder="Select a National Park">
-                <datalist id="parks-selection">
+      <div class="formBox" id="form-box">
+        <form class="formPage">
+          <input name="national park" id="park-selection" list="parks-selection" placeholder="Select a National Park" />
+          <datalist id="parks-selection"> </datalist>
+          <!-- <option value="">Select a National Park</option> -->
 
-                </datalist>
-                    <!-- <option value="">Select a National Park</option> -->
-                    
-                <!-- </select> -->
-                <!-- <input type="text" class="parkSelectionInput" placeholder="  National Park Selection" id="park-selection" name="National Park">--><br>
-                <div class="datebox">
-                    <div class="datepicker">
-                        <label for="from">From</label>
-                        <input type="date" class="dates" id="from" name="from" >
-                    </div>
-                    <div class="datepicker">
-                        <label for="to">To</label>
-                        <input type="date" class="dates" id="to" name="to">
-                    </div>
-                </div>
-                <button class="submitBtn" id="submit-btn" type="button">Submit</button>
-            </form>
-        </div>
+          <!-- </select> -->
+          <!-- <input type="text" class="parkSelectionInput" placeholder="  National Park Selection" id="park-selection" name="National Park">--><br />
+          <div class="datebox">
+            <div class="datepicker">
+              <label for="from">From</label>
+              <input type="date" class="dates" id="from" name="from" />
+            </div>
+            <div class="datepicker">
+              <label for="to">To</label>
+              <input type="date" class="dates" id="to" name="to" />
+            </div>
+          </div>
+          <button class="submitBtn" id="submit-btn" type="button">Submit</button>
+        </form>
+      </div>
     </section>
     <!-- end national park selection form -->
 
-    
-
     <!-- national park information display -->
     <section class="nationalParkContainer hidden" id="national-park-container">
-        <div class="nationalParkBox">
-            <img class="parkPicture" id="park-picture"/>
-            <div class="parkInfoContainer" id="park-info-container">
-                <h2 class="parkName" id="park-name">Park Name Text</h2>
-                <p class="parkOverview" id="park-overview">park overview</p>
-                <div class="parkOptionsContainer" id="park-options-container">
-                    <div class="buttonContainer">
-                        <button class="activityBtn" id="activity-btn" >Activities</button>
-                        <button class="visitorBtn" id="visitor-btn">Visitor Info</button>
-                        <button class="gbBtn" id="gb-btn">Go Back</button>
-                    </div>
-                </div>
+      <div class="nationalParkBox">
+        <img class="parkPicture" id="park-picture" />
+        <div class="parkInfoContainer" id="park-info-container">
+          <h2 class="parkName" id="park-name">Park Name Text</h2>
+          <p class="parkOverview" id="park-overview">park overview</p>
+          <div class="parkOptionsContainer" id="park-options-container">
+            <div class="buttonContainer">
+              <button class="activityBtn" id="activity-btn">Activities</button>
+              <button class="visitorBtn" id="visitor-btn">Visitor Info</button>
+              <button class="gbBtn" id="gb-btn">Go Back</button>
             </div>
+          </div>
         </div>
-        <div class="weatherInfoBox" id="weather-info-box">
-            <div class="forcastBoxes row" id="forcast-boxes">
-                <div class="col4">
-                    <div class="card blue-grey darken-1">
-                        <div class="card-content white-text" id="weather-card">
-                          <span class="card-title">Card Title</span>
-                          <div class="card-image">
-                            <img id="weather-image" src="">
-                          </div>
-                          <p>test</p>
-                        </div>
-                    </div>
+      </div>
+      <div class="weatherInfoBox" id="weather-info-box">
+        <div class="forcastBoxes row" id="forcast-boxes">
+          <div class="col4">
+            <div class="card blue-grey darken-1">
+              <div class="card-content white-text" id="weather-card">
+                <span class="card-title">Card Title</span>
+                <div class="card-image">
+                  <img id="weather-image" src="" />
                 </div>
-                <div class="col4">
-                    <div class="card blue-grey darken-1">
-                        <div class="card-content white-text" id="weather-card">
-                          <span class="card-title">Card Title</span>
-                          <div class="card-image">
-                            <img id="weather-image" src="">
-                          </div>
-                          <p>test</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col4">
-                    <div class="card blue-grey darken-1">
-                        <div class="card-content white-text" id="weather-card">
-                          <span class="card-title">Card Title</span>
-                          <div class="card-image">
-                            <img id="weather-image" src="">
-                          </div>
-                          <p>test</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col4">
-                    <div class="card blue-grey darken-1">
-                        <div class="card-content white-text" id="weather-card">
-                          <span class="card-title">Card Title</span>
-                          <div class="card-image">
-                            <img id="weather-image" src="">
-                          </div>
-                          <p>test</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col4">
-                    <div class="card blue-grey darken-1">
-                        <div class="card-content white-text" id="weather-card">
-                          <span class="card-title">Card Title</span>
-                          <div class="card-image">
-                            <img id="weather-image" src="">
-                          </div>
-                          <p>test</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col4">
-                    <div class="card blue-grey darken-1">
-                        <div class="card-content white-text" id="weather-card">
-                          <span class="card-title">Card Title</span>
-                          <div class="card-image">
-                            <img id="weather-image" src="">
-                          </div>
-                          <p>test</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col4">
-                    <div class="card blue-grey darken-1">
-                        <div class="card-content white-text" id="weather-card">
-                          <span class="card-title">Card Title</span>
-                          <div class="card-image">
-                            <img id="weather-image" src="">
-                          </div>
-                          <p>test</p>
-                        </div>
-
-                    </div>
-                </div>
+                <p>test</p>
+              </div>
             </div>
+          </div>
+          <div class="col4">
+            <div class="card blue-grey darken-1">
+              <div class="card-content white-text" id="weather-card">
+                <span class="card-title">Card Title</span>
+                <div class="card-image">
+                  <img id="weather-image" src="" />
+                </div>
+                <p>test</p>
+              </div>
+            </div>
+          </div>
+          <div class="col4">
+            <div class="card blue-grey darken-1">
+              <div class="card-content white-text" id="weather-card">
+                <span class="card-title">Card Title</span>
+                <div class="card-image">
+                  <img id="weather-image" src="" />
+                </div>
+                <p>test</p>
+              </div>
+            </div>
+          </div>
+          <div class="col4">
+            <div class="card blue-grey darken-1">
+              <div class="card-content white-text" id="weather-card">
+                <span class="card-title">Card Title</span>
+                <div class="card-image">
+                  <img id="weather-image" src="" />
+                </div>
+                <p>test</p>
+              </div>
+            </div>
+          </div>
+          <div class="col4">
+            <div class="card blue-grey darken-1">
+              <div class="card-content white-text" id="weather-card">
+                <span class="card-title">Card Title</span>
+                <div class="card-image">
+                  <img id="weather-image" src="" />
+                </div>
+                <p>test</p>
+              </div>
+            </div>
+          </div>
+          <div class="col4">
+            <div class="card blue-grey darken-1">
+              <div class="card-content white-text" id="weather-card">
+                <span class="card-title">Card Title</span>
+                <div class="card-image">
+                  <img id="weather-image" src="" />
+                </div>
+                <p>test</p>
+              </div>
+            </div>
+          </div>
+          <div class="col4">
+            <div class="card blue-grey darken-1">
+              <div class="card-content white-text" id="weather-card">
+                <span class="card-title">Card Title</span>
+                <div class="card-image">
+                  <img id="weather-image" src="" />
+                </div>
+                <p>test</p>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
     <!-- end national park information display -->
     <section class="bestHikesContainer hidden" id="best-hikes-container">
-        <div class="bestHikesBox">
-            <div class="hikeList" id="hike-list-container">
-                <h1 class="hikeTitleText">Top Rated Activities</h1>
-                <div class="hikeList hikeListScript" id="dynamic-hike-list">
-                    
-                </div>
-                <p>*click on an activity to add it to your bucketlist!*</p>
-                <button class="goBackBtn" id="go-back-btn">Go Back</button>
-            </div>
-            <img class="hikeImg" src="./assets/images/hiking photo.jpeg" />
+      <div class="bestHikesBox">
+        <div class="hikeList" id="hike-list-container">
+          <h1 class="hikeTitleText">Top Rated Activities</h1>
+          <div class="hikeList hikeListScript" id="dynamic-hike-list"></div>
+          <p>*click on an activity to add it to your bucketlist!*</p>
+          <button class="goBackBtn" id="go-back-btn">Go Back</button>
         </div>
+        <!-- <img class="hikeImg" src="./assets/images/hiking photo.jpeg" /> -->
+      </div>
     </section>
     <!-- end hike info section -->
 
     <!-- start visitor info section -->
     <section class="visitorInfoContainer hidden" id="visitor-info-container">
-        <div class="visitorInfoBox"> 
-            <section id="mapbox" >
-                <div class="Map" id="map"></div>
-            </section>
-            <div class="visitorInfoList">
-                <h2 class="visitorInfoTitle" id="visitor-info-park-name">Visitor Info:</h2>
-                <div class="parkHours" id="park-hours">Park Hours: insert hours</div>
-                <br>
-                <br>
-                <!-- <div class="holidayHours" id="holiday-hours">Holiday Hours: insert Hours</div> -->
-                <div class="contactUs" id="contact-us">Contact Us: insert phone number</div>
-                <button class="goBackBtn" id="goback-btn">Go Back</button>
-            </div>
+      <div class="visitorInfoBox">
+        <section id="mapbox">
+          <div class="Map" id="map"></div>
+        </section>
+        <div class="visitorInfoList">
+          <h2 class="visitorInfoTitle" id="visitor-info-park-name">Visitor Info:</h2>
+          <div class="parkHours" id="park-hours">Park Hours: insert hours</div>
+          <br />
+          <br />
+          <!-- <div class="holidayHours" id="holiday-hours">Holiday Hours: insert Hours</div> -->
+          <div class="contactUs" id="contact-us">Contact Us: insert phone number</div>
+          <button class="goBackBtn" id="goback-btn">Go Back</button>
         </div>
+      </div>
     </section>
     <!-- end visitor info section -->
 
     <!-- start Bucketlist Section -->
     <section class="bucketlistContainer hidden" id="bucketlist-container">
-        <div class="bucketlistBox" id="bucketlist-box">
-            <div class="bucketlistTitle">Bucketlist</div>
-            <div class="listBoxes">
-                <div class="dragDropBox1" id="drag-drop-todo">
-                    <div class="textContainerOne">
-                        <div class="todoText">To-Do</div>
-                        <div class="hikeBucketlist" id="hike-bucketlist-todo">
-
-                        </div>
-                    </div>
-                </div>
+      <div class="bucketlistBox" id="bucketlist-box">
+        <div class="bucketlistTitle">Bucketlist</div>
+        <div class="listBoxes">
+          <div class="dragDropBox1" id="drag-drop-todo">
+            <div class="textContainerOne">
+              <div class="todoText"></div>
+              <div class="hikeBucketlist" id="hike-bucketlist-todo"></div>
             </div>
-            <div class="bucketlistFooter" id="bucketlist-footer"></div>
+          </div>
         </div>
+        <div class="bucketlistFooter" id="bucketlist-footer"></div>
+      </div>
     </section>
 
     <!-- learn more section -->
     <section class="learnMoreText hidden" id="learn-more-page">
-        <p class="parkscapeBio"> ParkScape was created as a means to plan last minute trips to some of the most underexplored attractions native to the US, our National Parks! The application utilizes multiple APIs to give you access to individual park details, weekly weather forecasts, attractions and contact information. Users can also compile all of their favorite attractions in their own personal Bucketlist! Can't commit to particular gameplan? That's fine, you can remove and update items in your Bucketlist as you see fit. Thank you for visiting ParkScape, and happy exploring! </p>
+      <div class="parkscapeBio">
+        <div>
+          ParkScape was created as a means to plan last minute trips to some of the most underexplored attractions
+          native to the US, our National Parks! The application utilizes multiple APIs to give you access to individual
+          park details, weekly weather forecasts, attractions and contact information. Users can also compile all of
+          their favorite attractions in their own personal Bucketlist! Can't commit to particular gameplan? That's fine,
+          you can remove and update items in your Bucketlist as you see fit. Thank you for visiting ParkScape, and happy
+          exploring!
+        </div>
+      </div>
     </section>
+  </body>
 
-    <!-- footer section -->
-    <footer class="footerStyles">
-        <a class="npsLink" id="nps-link" href="https://www.nps.gov/index.htm">Visit NPS @</a>
-    </footer>
-    <!-- end footer section -->
-</body>
-
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script
+    src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-    crossorigin=""></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="./assets/js/script.js"></script>
-
+    crossorigin=""
+  ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+    integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.0/iconify-icon.min.js"></script>
+  <script src="./assets/js/script.js"></script>
 </html>
