@@ -64,12 +64,12 @@ body {
 
 .formPage {
   display: flex;
+  opacity: 0.9;
   flex-direction: column;
   background-color: rgb(20, 35, 24);
-  opacity: 0.75;
   padding: 45px 120px;
   border-radius: 15px;
-  box-shadow: 1px 1px 40px 1px grey;
+  box-shadow: 1px 1px 10px 1px black;
   margin: 25px 0 100px 0;
 }
 
@@ -328,14 +328,13 @@ body {
 }
 
 .visitorInfoBox {
-  background-color: #958778;
+  background-color: rgba(20, 35, 24, 0.7);
+  border-radius: 25px;
   z-index: 1000;
-  border-top: solid 5px #707454;
   color: white;
-  box-shadow: 1px 1px 40px 1px grey;
+  box-shadow: 1px 1px 40px 1px black;
   width: 75%;
   height: 85%;
-  margin: 25px 0 100px 0;
 }
 
 .visitorInfoList {
@@ -345,7 +344,15 @@ body {
 }
 
 .visitorInfoTitle {
-  padding: 1rem;
+  text-shadow: 2px 2px 8px black;
+}
+
+.parkHours {
+  text-shadow: 2px 2px 8px black;
+}
+
+.contactUs {
+  text-shadow: 2px 2px 8px black;
 }
 
 #mapbox {
@@ -355,10 +362,15 @@ body {
 
 .leaflet-pane {
   transform: translate3d(341px, 252px, 0px);
+  border-radius: 25px;
 }
 
 .Map {
   z-index: 0;
+  border-radius: 25px;
+  width: 500px;
+  height: 500px;
+  margin: 2em;
 }
 
 /* end visitor info styles */
@@ -374,15 +386,17 @@ body {
   display: flex;
   z-index: 1000;
   flex-direction: column;
-  background-color: #454e59;
+  background-color: rgba(20, 35, 24, 0.7);
+  border-radius: 25px;
   align-items: center;
-  box-shadow: 1px 1px 40px 1px grey;
+  /* box-shadow: 1px 1px 40px 1px black; */
   margin: 0px 0 100px 0;
 }
 
 .bucketlistTitle {
   font-size: 26pt;
   padding: 10px;
+  text-shadow: 2px 2px 8px black;
 }
 
 .listBoxes {
@@ -398,18 +412,14 @@ body {
 }
 
 .dragDropBox1 {
-  background-color: #fcf6ee;
   color: black;
   padding: 200px;
-  border-right: 3px solid #454e59;
-  border-left: 3px solid #454e59;
-  border-bottom: 3px solid #454e59;
   width: 40em;
 }
 
 .hikesTodoList {
   display: grid;
-  background-color: #454e59;
+  background-color: rgba(20, 35, 24, 0.8);
   color: white;
   text-align: center;
   border-radius: 3px;
@@ -417,20 +427,10 @@ body {
   margin-top: 5px;
 }
 
-.deleteBtnEl:hover {
-  background-color: #707454;
-}
-
-.bucketlistDelete {
-  background-color: red;
-  font-size: 24pt;
-  width: 100%;
-  text-align: center;
-  padding: 10px;
-}
-
-.bucketlistDelete:hover {
-  font-size: 26pt;
+.deleteBtnEl {
+  background-color: #454e59;
+  color: white;
+  border-radius: 5px;
 }
 
 /* learn more page */
@@ -482,6 +482,9 @@ body {
 
 .modalBox {
   background-color: #fefefe;
+  display: flex;
+  justify-content: center;
+  border-radius: 25px;
   z-index: 1100;
   margin: 20% auto;
   padding: 20px;
@@ -490,9 +493,9 @@ body {
 }
 
 .modalTitle {
-  font-size: 3em;
+  font-size: 2em;
   text-align: center;
-  font-weight: 400;
+  font-weight: 600;
   margin: 1rem;
 }
 
@@ -500,6 +503,11 @@ body {
   text-align: center;
   padding: 20px;
   font-size: 1em;
+}
+
+.check {
+  text-align: center;
+  font-size: 5em;
 }
 
 /* utility classes */
